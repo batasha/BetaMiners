@@ -14,7 +14,10 @@ class User < ActiveRecord::Base
             provider: auth.provider,
             uid: auth.uid,
             email: auth.info.email,
-            password: Devise.friendly_token[0, 20]
+            first_name: auth.info.first_name,
+            last_name: auth.info.last_name,
+            access_token: auth.credentials.token,
+            password: Devise.friendly_token[0, 20],
       )
       user
     end
@@ -22,7 +25,7 @@ class User < ActiveRecord::Base
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me,
-                  :first_name, :last_name, :provider, :uid
+                  :first_name, :last_name, :provider, :uid, :access_token
 
 
 end
