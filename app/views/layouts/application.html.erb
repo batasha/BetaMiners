@@ -8,6 +8,19 @@
 </head>
 <body>
   <header>
+    <nav class="navbar">
+      <div class="navbar-inner">
+        <a class="brand" href="#">BetaMiners</a>
+
+        <ul class="nav">
+          <li><a href="#">Home</a></li>
+          <li><a href="#">Profile</a></li>
+          <li><a href="#">Apps</a></li>
+          <li><a href="#">New Project</a></li>
+        </ul>
+      </div>
+    </nav>
+
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
   </header>
@@ -17,6 +30,7 @@
 
 <footer>
   <%= debug params %>
+  <%= debug request.env%>
 </footer>
 </body>
 </html>

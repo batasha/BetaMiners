@@ -19,6 +19,14 @@ class User < ActiveRecord::Base
             access_token: auth.credentials.token,
             password: Devise.friendly_token[0, 20],
       )
+      graph = Koala::Facebook::API.new(user.access_token)
+      user_data = graph.get_object('me', fields: ['birthday', 'location', 'gender'])
+      debugger
+      user.create_profile!(
+            birthday: user_data['user_birthday'],
+            location: user_data['user_location'],
+            gender: user_data['gender']
+      )
       user
     end
   end
@@ -27,5 +35,10 @@ class User < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :remember_me,
                   :first_name, :last_name, :provider, :uid, :access_token
 
+  has_one :profile
 
+
+  def full_name
+      "#{first_name} #{last_name}"
+  end
 end
