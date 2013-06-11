@@ -46,3 +46,4 @@ gem 'simple_form'
 gem 'omniauth'
 gem 'omniauth-facebook'
 gem "koala", "~> 1.7.0rc1"
+gem 'useragent'

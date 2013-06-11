@@ -11,7 +11,13 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130610192840) do
+ActiveRecord::Schema.define(:version => 20130611170304) do
+
+  create_table "platforms", :force => true do |t|
+    t.string "os"
+    t.string "browser"
+    t.string "version"
+  end
 
   create_table "profiles", :force => true do |t|
     t.date    "birthday"
