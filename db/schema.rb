@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130611183254) do
+ActiveRecord::Schema.define(:version => 20130611193559) do
 
   create_table "platforms", :force => true do |t|
     t.string "os"
@@ -33,7 +33,7 @@ ActiveRecord::Schema.define(:version => 20130611183254) do
     t.string   "url"
     t.string   "category"
     t.text     "description"
-    t.boolean  "private"
+    t.boolean  "private",           :default => false
     t.integer  "user_id"
     t.string   "logo_file_name"
     t.string   "logo_content_type"

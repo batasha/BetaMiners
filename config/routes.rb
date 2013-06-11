@@ -5,4 +5,5 @@ BetaMiners::Application.routes.draw do
   root to: 'users#show'
 
   resources :users
+  resources :projects
 end

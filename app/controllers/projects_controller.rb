@@ -4,15 +4,16 @@ class ProjectsController < ApplicationController
   end
 
   def show
-    @project = Project.find(:id)
+    @project = Project.find(params[:id])
   end
 
   def new
     @project = current_user.projects.build
+    3.times {@project.screenshots.build}
   end
 
   def create
-    @project = current_user.projects.build
+    @project = current_user.projects.build(params[:project])
 
     if @project.save
       redirect_to @project

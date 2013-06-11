@@ -1,0 +1,30 @@
+<ul class="nav nav-list">
+  <hr>
+  <% @projects.each do |project| %>
+
+  <li>
+    <div class="row-fluid clearfix">
+      <div class="span1">
+        <%= link_to image_tag(project.logo.url(:thumb), alt: project.name),
+          project_path(project) %>
+      </div>
+
+      <div class="span2">
+        <h4><%= link_to project.name, project_path(project) %></h4>
+        <em><%= project.category %></em>
+      </div>
+
+      <div class="span6 offset3">
+        <% if project.description.length > 150 %>
+          <%= project.description.slice(0, 150) + "..." %>
+        <% else%>
+          <%= project.description %>
+        <% end %>
+      </div>
+    </div>
+  </li>
+  <hr>
+  <% end %>
+</ul>
+
+
