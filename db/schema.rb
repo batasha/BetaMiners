@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130611170304) do
+ActiveRecord::Schema.define(:version => 20130611183254) do
 
   create_table "platforms", :force => true do |t|
     t.string "os"
@@ -27,6 +27,32 @@ ActiveRecord::Schema.define(:version => 20130611170304) do
   end
 
   add_index "profiles", ["user_id"], :name => "index_profiles_on_user_id"
+
+  create_table "projects", :force => true do |t|
+    t.string   "name"
+    t.string   "url"
+    t.string   "category"
+    t.text     "description"
+    t.boolean  "private"
+    t.integer  "user_id"
+    t.string   "logo_file_name"
+    t.string   "logo_content_type"
+    t.integer  "logo_file_size"
+    t.datetime "logo_updated_at"
+  end
+
+  add_index "projects", ["user_id"], :name => "index_projects_on_user_id"
+
+  create_table "screenshots", :force => true do |t|
+    t.integer  "project_id"
+    t.string   "caption"
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
+  end
+
+  add_index "screenshots", ["project_id"], :name => "index_screenshots_on_project_id"
 
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -46,6 +72,10 @@ ActiveRecord::Schema.define(:version => 20130611170304) do
     t.string   "provider"
     t.string   "uid"
     t.string   "access_token"
+    t.string   "picture_file_name"
+    t.string   "picture_content_type"
+    t.integer  "picture_file_size"
+    t.datetime "picture_updated_at"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

@@ -35,10 +35,15 @@ class User < ActiveRecord::Base
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me,
                   :first_name, :last_name, :provider, :uid, :access_token,
-                  :profile_attributes
+                  :profile_attributes, :picture
 
   has_one :profile, dependent: :destroy
   accepts_nested_attributes_for :profile
+
+  has_many :projects, dependent: :destroy
+
+  has_attached_file :picture, styles: {large: "100x100>", thumb: "50x50>"},
+                    default_url: "public/missing.png"
 
 
   def full_name
