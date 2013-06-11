@@ -20,11 +20,12 @@ class User < ActiveRecord::Base
             password: Devise.friendly_token[0, 20],
       )
       graph = Koala::Facebook::API.new(user.access_token)
-      user_data = graph.get_object('me', fields: ['birthday', 'location', 'gender'])
+      user_data = graph.get_object('me', fields: 'birthday, location, gender')
       debugger
+      bd_data = user_data['birthday'].split('/').map!(&:to_i)
       user.create_profile!(
-            birthday: user_data['user_birthday'],
-            location: user_data['user_location'],
+            birthday: Date.new(bd_data[2], bd_data[0], bd_data[1]),
+            location: user_data['location']['name'],
             gender: user_data['gender']
       )
       user
@@ -33,9 +34,11 @@ class User < ActiveRecord::Base
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me,
-                  :first_name, :last_name, :provider, :uid, :access_token
+                  :first_name, :last_name, :provider, :uid, :access_token,
+                  :profile_attributes
 
-  has_one :profile
+  has_one :profile, dependent: :destroy
+  accepts_nested_attributes_for :profile
 
 
   def full_name
