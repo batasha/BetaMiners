@@ -1,0 +1,11 @@
+<p>
+  <strong>Name:</strong>
+  <%= "#{@survey.project.name} #{@survey.test_phase.name} Feedback" %>
+</p>
+
+<ol>
+  <% for question in @survey.questions %>
+  <li><%= question.text %></li>
+  <% end %>
+</ol>
+

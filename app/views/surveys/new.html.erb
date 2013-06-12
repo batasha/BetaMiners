@@ -1,4 +1,8 @@
 <%= simple_form_for @survey, url: project_test_phase_surveys_path(@test.project_id, @test) do |f| %>
 
-  <% f.button :submit%>
+  <%= f.simple_fields_for :questions do |q| %>
+    <%= q.input :text, label: "Question" %>
+  <% end %>
+
+  <%= f.button :submit %>
 <% end %>

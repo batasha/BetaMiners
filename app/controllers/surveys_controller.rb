@@ -2,6 +2,7 @@ class SurveysController < ApplicationController
   def new
     @test = TestPhase.find(params[:test_phase_id])
     @survey = @test.build_survey
+    3.times {@survey.questions.build}
   end
 
   def create
@@ -13,5 +14,10 @@ class SurveysController < ApplicationController
     else
       render :new
     end
+  end
+
+  def show
+    @test = TestPhase.find(params[:test_phase_id])
+    @survey = @test.survey
   end
 end
