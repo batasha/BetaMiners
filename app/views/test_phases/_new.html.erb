@@ -1,0 +1,6 @@
+<%= simple_form_for :test_phase, url: project_test_phases_path(params[:project_id]) do |f| %>
+  <%= f.input :name %>
+  <%= f.input :start_date, as: :date %>
+  <%= f.input :end_date, as: :date %>
+  <%= f.button :submit %>
+<% end %>

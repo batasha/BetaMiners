@@ -23,4 +23,11 @@ class ProjectsController < ApplicationController
       render :new
     end
   end
+
+  def control_panel
+    @project = Project.find(params[:project_id])
+    @tests = @project.test_phases.select(&:id)
+    @new_test = @project.test_phases.build
+    @screenshots = @project.screenshots.map(&:image)
+  end
 end

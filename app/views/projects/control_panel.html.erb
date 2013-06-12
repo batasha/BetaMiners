@@ -1,0 +1,64 @@
+<div class="container">
+  <section class="row well tabbable tabs-below">
+    <h2>Control Panel</h2>
+      <div class="tab-content">
+        <div class="tab-pane active" id="main">
+          <div class="span8">
+
+            <dl class="project-info">
+              <dt class="label-field span2">Name<dt>
+              <dd class="clearfix"><%= @project.name %></dd>
+              <dt class="label-field span2">URL<dt>
+              <dd class="clearfix"><%= @project.url %></dd>
+              <dt class="label-field span2">Category<dt>
+              <dd class="clearfix"><%= @project.category %></dd>
+              <dt class="label-field span2">Description<dt><br />
+              <dd class="clearfix"><%= @project.description.html_safe %></dd>
+            </dl>
+
+          </div>
+
+          <div class="span3">
+            <h4>Screenshots</h4>
+            <hr>
+            <% @screenshots.each do |img| %>
+              <%= image_tag img.url(:thumb) %>
+              <hr>
+            <% end %>
+          </div>
+        </div>
+
+        <% @tests.each do |test| %>
+          <div class="tab-pane" id="test-<%= test.id %>">
+            <h4><%= test.name %></h4>
+
+            <dl class="test-info">
+              <dt class="label-field span2">Name<dt>
+              <dd class="clearfix"><%= test.name %></dd>
+              <dt class="label-field span2">Date Range<dt>
+              <dd class="clearfix"><%= test.start_date %> - <%= test.end_date %></dd>
+              <dt class="label-field span2">Results<dt>
+              <dd class="clearfix"></dd>
+            </dl>
+
+          </div>
+        <% end %>
+
+        <div class="tab-pane" id="new_test">
+          <%= render "test_phases/new", locals: {test_phase: @new_test, project: @project} %>
+        </div>
+      </div>
+
+      <ul class="nav nav-tabs">
+        <li class="active"><a href="#main" data-toggle="tab">Main</a></li>
+        <% @tests.each do |test| %>
+          <li>
+            <a href="#test-<%= test.id %>" data-toggle="tab">
+              <%= test.name %>
+            </a>
+          </li>
+        <% end %>
+        <li><a href="#new_test" data-toggle="tab">New Test Phase</a></li>
+      </ul>
+  </section>
+</div>
