@@ -21,15 +21,15 @@ class User < ActiveRecord::Base
       )
       graph = Koala::Facebook::API.new(user.access_token)
       user_data = graph.get_object('me', fields: 'birthday, location, gender')
-      debugger
+
       bd_data = user_data['birthday'].split('/').map!(&:to_i)
       user.create_profile!(
             birthday: Date.new(bd_data[2], bd_data[0], bd_data[1]),
             location: user_data['location']['name'],
             gender: user_data['gender']
       )
-      user
     end
+    user
   end
 
   # Setup accessible (or protected) attributes for your model

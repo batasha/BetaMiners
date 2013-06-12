@@ -1,10 +1,11 @@
 class ProjectsController < ApplicationController
   def index
-    @projects = Project.where(private: false)
+    @projects = Project.where(private: false).select(&:active_test)
   end
 
   def show
     @project = Project.find(params[:id])
+    @test = @project.active_test || @project.test_phases.last
   end
 
   def new

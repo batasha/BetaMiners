@@ -14,9 +14,15 @@
 
         <ul class="nav">
           <li><a href="#">Home</a></li>
-          <li><a href="#">Profile</a></li>
-          <li><a href="#">Apps</a></li>
-          <li><%= link_to "New Project", new_project_path %></li>
+          <li><%= link_to "Apps", projects_path %></li>
+          <% if current_user %>
+            <li><%= link_to "Profile", user_path(current_user) %></li>
+            <li><%= link_to "New Project", new_project_path %></li>
+            <li><%= link_to "Sign Out", destroy_user_session_path, method: :delete %></li>
+          <% else %>
+            <li><%= link_to "Sign In", new_user_session_path %></li>
+            <% end %>
+
         </ul>
       </div>
     </nav>
