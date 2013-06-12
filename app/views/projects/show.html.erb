@@ -6,7 +6,7 @@
 
     <div class="span8">
       <div class="carousel">
-        <%= image_tag @project.screenshots[1].image.url(:large) %>
+        <%= @project.screenshots.empty? ? image_tag("missing.png") : image_tag( @project.screenshots[1].image.url(:large)) %>
       </div>
       <article>
         <%= @project.description %>

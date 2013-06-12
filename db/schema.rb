@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130611193559) do
+ActiveRecord::Schema.define(:version => 20130612132600) do
 
   create_table "platforms", :force => true do |t|
     t.string "os"
@@ -53,6 +53,15 @@ ActiveRecord::Schema.define(:version => 20130611193559) do
   end
 
   add_index "screenshots", ["project_id"], :name => "index_screenshots_on_project_id"
+
+  create_table "test_phases", :force => true do |t|
+    t.string  "name"
+    t.date    "start_date"
+    t.date    "end_date"
+    t.integer "project_id"
+  end
+
+  add_index "test_phases", ["project_id"], :name => "index_test_phases_on_project_id"
 
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
