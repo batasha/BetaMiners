@@ -10,6 +10,7 @@ class ProjectsController < ApplicationController
 
   def new
     @project = current_user.projects.build
+    @project.test_phases.build
     3.times {@project.screenshots.build}
   end
 

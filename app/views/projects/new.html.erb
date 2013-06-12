@@ -1,38 +1,57 @@
 <%= simple_form_for @project do |f| %>
-  <h3>Enter Project Details</h3>
+<section class="container">
+  <div class="row">
+      <h3>Enter Project Details</h3>
 
-  <%= f.input :name %>
-  <%= f.input :url %>
-  <%= f.input :category, collection: ["Books", "Business", "Finance", "Games",
-                                      "Health & Fitness", "Lifestyle", "Music",
-                                      "Navigation", "News", "Photography",
-                                      "Productivity", "Reference", "Social",
-                                      "Sports", "Travel", "Utilities", "Weather"
-                                      ] %>
-  <%= f.input :description %>
-  <%= f.input :private %>
+      <%= f.input :name %>
+      <%= f.input :url %>
+      <%= f.input :category, collection: ["Books", "Business", "Finance", "Games",
+                                          "Health & Fitness", "Lifestyle", "Music",
+                                          "Navigation", "News", "Photography",
+                                          "Productivity", "Reference", "Social",
+                                          "Sports", "Travel", "Utilities", "Weather"
+                                          ] %>
 
-  <div class="control-group string optional">
-    <%= f.label :logo, class: "string optional control-label" %>
-    <div class="controls">
-      <%= f.file_field :logo, class: "string optional" %>
-    </div>
-  </div>
-
-  <h3>Upload Screenshots:</h3>
-  <hr>
-
-      <%= f.simple_fields_for :screenshots do |s| %>
-        <div class="control-group string optional">
-          <%= s.label :image, class: "string optional control-label" %>
-          <div class="controls">
-            <%= s.file_field :image, class: "string optional" %>
-          </div>
+      <div class="control-group text optional project_description">
+        <%= f.label :description, class: "text optional control-label" %>
+        <div class="controls">
+          <%= f.text_area :description, class: "tinymce" %>
         </div>
-        <%= s.input :caption %>
-        <hr>
-      <% end %>
+      </div>
 
+      <%= f.input :private %>
 
-  <%= f.button :submit %>
+      <div class="control-group string optional">
+        <%= f.label :logo, class: "string optional control-label" %>
+        <div class="controls">
+          <%= f.file_field :logo, class: "string optional" %>
+        </div>
+      </div>
+
+      <h3>Upload Screenshots:</h3>
+      <hr>
+
+          <%= f.simple_fields_for :screenshots do |s| %>
+            <div class="control-group string optional">
+              <%= s.label :image, class: "string optional control-label" %>
+              <div class="controls">
+                <%= s.file_field :image, class: "string optional" %>
+              </div>
+            </div>
+            <%= s.input :caption %>
+            <hr>
+          <% end %>
+        </div>
+
+          <h3>Create New Test Phase:</h3>
+          <%= f.simple_fields_for :test_phases do |t| %>
+            <%= t.input :name %>
+            <%= t.input :start_date, as: :date %>
+            <%= t.input :end_date, as: :date %>
+          <% end %>
+
+      <%= f.button :submit %>
+    </div>
+  </section>
 <% end %>
+<%= tinymce %>

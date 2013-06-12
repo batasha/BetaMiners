@@ -10,7 +10,7 @@
         <%= @project.screenshots.empty? ? image_tag("missing.png") : image_tag( @project.screenshots[1].image.url(:large)) %>
       </div>
       <article>
-        <%= @project.description %>
+        <%= @project.description.html_safe %>
       </article>
     </div>
 
