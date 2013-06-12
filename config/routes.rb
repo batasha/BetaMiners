@@ -7,7 +7,10 @@ BetaMiners::Application.routes.draw do
   resources :users
 
   resources :projects do
-    resources :test_phases
+    resources :test_phases do
+      resources :surveys
+    end
+
     get :control_panel
   end
 end

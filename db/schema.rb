@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130612132600) do
+ActiveRecord::Schema.define(:version => 20130612205445) do
 
   create_table "platforms", :force => true do |t|
     t.string "os"
@@ -53,6 +53,12 @@ ActiveRecord::Schema.define(:version => 20130612132600) do
   end
 
   add_index "screenshots", ["project_id"], :name => "index_screenshots_on_project_id"
+
+  create_table "surveys", :force => true do |t|
+    t.integer "test_phase_id"
+  end
+
+  add_index "surveys", ["test_phase_id"], :name => "index_surveys_on_test_phase_id"
 
   create_table "test_phases", :force => true do |t|
     t.string  "name"

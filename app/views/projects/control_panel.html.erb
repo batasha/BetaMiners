@@ -36,11 +36,11 @@
               <dt class="label-field span2">Name<dt>
               <dd class="clearfix"><%= test.name %></dd>
               <dt class="label-field span2">Date Range<dt>
-              <dd class="clearfix"><%= test.start_date %> - <%= test.end_date %></dd>
+              <dd class="clearfix"><%= test.start_date %> to <%= test.end_date %></dd>
               <dt class="label-field span2">Results<dt>
               <dd class="clearfix"></dd>
             </dl>
-
+            <%= link_to "Build Feedback Form", new_project_test_phase_survey_path(@project, test) %>
           </div>
         <% end %>
 
