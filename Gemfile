@@ -49,6 +49,7 @@ gem 'omniauth-facebook'
 gem "koala", "~> 1.7.0rc1"
 gem 'useragent'
 gem 'paperclip'
+gem 'aws-sdk'
 gem 'tinymce-rails'
 gem 'useragent'
 gem 'figaro'
