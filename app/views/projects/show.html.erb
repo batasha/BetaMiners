@@ -14,8 +14,16 @@
       </article>
     </div>
 
-    <div class="span4">
+    <div class="span3 offset1">
 
+      <% if @reg %>
+        <%= button_to "Stop Testing", project_registration_path(@project, @reg),
+          method: :delete, class: "btn btn-large btn-primary" %>
+
+      <% else %>
+        <%= button_to "Sign up to Test", project_registrations_path(@project),
+          class: "btn btn-large btn-primary" %>
+      <% end %>
     </div>
   </div>
 </div>

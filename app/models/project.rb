@@ -10,6 +10,9 @@ class Project < ActiveRecord::Base
   has_many :test_phases
   accepts_nested_attributes_for :test_phases, reject_if: :all_blank
 
+  has_many :registrations, dependent: :destroy
+  has_many :testers, through: :registrations, class_name: "User"
+
   has_attached_file :logo, styles: {large: "100x100>", thumb: "50x50>"},
                     default_url: "missing.png"
 

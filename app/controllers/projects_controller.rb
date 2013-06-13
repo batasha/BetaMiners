@@ -6,6 +6,7 @@ class ProjectsController < ApplicationController
   def show
     @project = Project.find(params[:id])
     @test = @project.active_test || @project.test_phases.last
+    @reg = current_user.registrations.where(project_id: @project.id)[0]
   end
 
   def new

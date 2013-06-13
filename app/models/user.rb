@@ -41,6 +41,8 @@ class User < ActiveRecord::Base
   accepts_nested_attributes_for :profile
 
   has_many :projects, dependent: :destroy
+  has_many :registrations, dependent: :destroy
+  has_many :test_projects, through: :registrations, class_name: "Project"
 
   has_attached_file :picture, styles: {large: "100x100>", thumb: "50x50>"},
                     default_url: "public/missing.png"

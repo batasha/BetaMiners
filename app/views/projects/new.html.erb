@@ -5,12 +5,7 @@
 
       <%= f.input :name %>
       <%= f.input :url %>
-      <%= f.input :category, collection: ["Books", "Business", "Finance", "Games",
-                                          "Health & Fitness", "Lifestyle", "Music",
-                                          "Navigation", "News", "Photography",
-                                          "Productivity", "Reference", "Social",
-                                          "Sports", "Travel", "Utilities", "Weather"
-                                          ] %>
+      <%= f.input :category, collection: CATEGORIES %>
 
       <div class="control-group text optional project_description">
         <%= f.label :description, class: "text optional control-label" %>
