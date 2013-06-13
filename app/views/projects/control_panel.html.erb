@@ -40,7 +40,16 @@
               <dt class="label-field span2">Results<dt>
               <dd class="clearfix"></dd>
             </dl>
-            <%= link_to "Build Feedback Form", new_project_test_phase_survey_path(@project, test) %>
+
+            <% if test.survey %>
+              <%= link_to "View Feedback Form",
+                project_test_phase_survey_path(@project, test) %>
+
+            <% else %>
+              <%= link_to "Build Feedback Form",
+                new_project_test_phase_survey_path(@project, test) %>
+
+            <% end %>
           </div>
         <% end %>
 
