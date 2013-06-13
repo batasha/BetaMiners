@@ -4,8 +4,13 @@
 </p>
 
 <ol>
-  <% for question in @survey.questions %>
+  <% @survey.questions.each do |question| %>
   <li><%= question.text %></li>
+  <ul>
+    <% question.responses.each do |response| %>
+      <li><%= response.text %></li>
+    <% end %>
+  </ul>
   <% end %>
 </ol>
 

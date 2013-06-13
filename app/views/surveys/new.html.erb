@@ -1,8 +1,10 @@
-<%= simple_form_for @survey, url: project_test_phase_surveys_path(@test.project_id, @test) do |f| %>
+<%= simple_form_for @survey, url: project_test_phase_survey_path(@test.project_id, @test) do |f| %>
 
   <%= f.simple_fields_for :questions do |q| %>
-    <%= q.input :text, label: "Question" %>
+    <%= render "questions", f: q %>
   <% end %>
+
+  <p><%= link_to_add_fields "Add Question", f, :questions %></p>
 
   <%= f.button :submit %>
 <% end %>
