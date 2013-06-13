@@ -42,7 +42,7 @@ class User < ActiveRecord::Base
 
   has_many :projects, dependent: :destroy
   has_many :registrations, dependent: :destroy
-  has_many :test_projects, through: :registrations, class_name: "Project"
+  has_many :test_projects, through: :registrations, source: :project
 
   has_many :feedbacks
   has_many :choices, through: :feedbacks

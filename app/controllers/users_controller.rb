@@ -5,6 +5,7 @@ class UsersController < ApplicationController
     @user = current_user
     @profile = current_user.profile
     @projects = current_user.projects
+    @test_projects = current_user.test_projects
   end
 
   def update
