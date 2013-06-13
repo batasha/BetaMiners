@@ -17,6 +17,15 @@ BetaMiners::Application.configure do
   config.action_mailer.raise_delivery_errors = false
   config.action_mailer.delivery_method = :letter_opener
 
+  config.paperclip_defaults = {
+    :storage => :s3,
+    :s3_credentials => {
+      :bucket => 'batasha-dev',
+      :access_key_id => ENV["ACCESS"],
+      :secret_access_key => ENV["SECRET"]
+    }
+  }
+
   # Print deprecation notices to the Rails logger
   config.active_support.deprecation = :log
 
