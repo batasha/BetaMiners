@@ -23,7 +23,7 @@
 
         <%= button_to "Access Website", url_with_protocol(@project.url), method: :get, class: "btn btn-large btn-success" %>
 
-        <%= button_to "Leave Feedback", @project.url, method: :get, class: "btn btn-large btn-info" %>
+        <%= button_to "Leave Feedback", new_project_feedback_path(@project), method: :get, class: "btn btn-large btn-info" %>
 
       <% else %>
         <%= button_to "Sign up to Test", project_registrations_path(@project), class: "btn btn-large btn-primary" %>

@@ -44,6 +44,9 @@ class User < ActiveRecord::Base
   has_many :registrations, dependent: :destroy
   has_many :test_projects, through: :registrations, class_name: "Project"
 
+  has_many :feedbacks
+  has_many :choices, through: :feedbacks
+
   has_attached_file :picture, styles: {large: "100x100>", thumb: "50x50>"},
                     default_url: "public/missing.png"
 

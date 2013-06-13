@@ -8,6 +8,7 @@ BetaMiners::Application.routes.draw do
 
   resources :projects do
     resources :registrations
+    resource :feedback
 
     resources :test_phases do
       resource :survey

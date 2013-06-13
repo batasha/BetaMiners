@@ -4,4 +4,9 @@ class Response < ActiveRecord::Base
   belongs_to :question
   has_one :survey, through: :question
 
+  has_many :choices
+
+  def count
+    choices.count
+  end
 end

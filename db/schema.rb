@@ -11,7 +11,24 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130613134835) do
+ActiveRecord::Schema.define(:version => 20130613181949) do
+
+  create_table "choices", :force => true do |t|
+    t.integer "feedback_id"
+    t.integer "response_id"
+    t.text    "comment"
+  end
+
+  add_index "choices", ["feedback_id"], :name => "index_choices_on_feedback_id"
+  add_index "choices", ["response_id"], :name => "index_choices_on_response_id"
+
+  create_table "feedbacks", :force => true do |t|
+    t.integer "survey_id"
+    t.integer "user_id"
+  end
+
+  add_index "feedbacks", ["survey_id"], :name => "index_feedbacks_on_survey_id"
+  add_index "feedbacks", ["user_id"], :name => "index_feedbacks_on_user_id"
 
   create_table "platforms", :force => true do |t|
     t.string "os"

@@ -1,0 +1,24 @@
+<div class="container">
+  <section class="row well tabbable tabs-below">
+    <%= simple_form_for @feedback, url: project_feedback_path(@project) do |f| %>
+    <h3>
+      <%= "#{@project.name} #{@test.name} Feedback" %>
+    </h3>
+
+    <ol>
+      <% @survey.questions.each do |question| %>
+      <li><%= question.text %></li>
+      <ul>
+        <%= f.fields_for :choices do |c| %>
+          <%= c.input :response_id, label: "", as: :radio_buttons,
+            collection: question.responses, label_method: :text %>
+          <%= c.input :comment %>
+        <% end %>
+      </ul>
+      <% end %>
+    </ol>
+
+    <%= f.button :submit %>
+    <% end %>
+  </section>
+</div>
