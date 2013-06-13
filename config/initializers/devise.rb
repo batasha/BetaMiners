@@ -222,7 +222,6 @@ Devise.setup do |config|
   # config.omniauth :github, 'APP_ID', 'APP_SECRET', :scope => 'user,public_repo'
 
   require 'omniauth-facebook'
-  require_relative '../keys.rb'
 
   config.omniauth :facebook, ENV['APP_ID'], ENV['APP_SECRET'],
     {scope: 'email, offline_access, user_birthday, user_location',
