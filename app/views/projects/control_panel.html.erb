@@ -43,7 +43,8 @@
 
             <% if test.survey %>
               <%= link_to "View Feedback Form",
-                project_test_phase_survey_path(@project, test) %>
+                project_test_phase_survey_path(@project, test), remote: true,
+                id: "feedback-view" %>
 
             <% else %>
               <%= link_to "Build Feedback Form",
@@ -71,3 +72,13 @@
       </ul>
   </section>
 </div>
+
+<script>
+
+$(document).ready(function() {
+  $("#feedback-view").on("ajax:success", function(event, data) {
+    $("section.row").html(data);
+  });
+});
+
+</script>

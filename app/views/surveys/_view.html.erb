@@ -1,0 +1,14 @@
+<h3>
+  <%= "#{@survey.project.name} #{@survey.test_phase.name} Feedback" %>
+</h3>
+
+<ol>
+  <% @survey.questions.each do |question| %>
+  <li><%= question.text %></li>
+  <ul>
+    <% question.responses.each do |response| %>
+      <li><%= response.text %></li>
+    <% end %>
+  </ul>
+  <% end %>
+</ol>

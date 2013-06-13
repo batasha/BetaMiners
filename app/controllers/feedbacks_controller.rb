@@ -13,6 +13,9 @@ class FeedbacksController < ApplicationController
     @test = @project.active_test || @project.test_phases.last
     @survey = @test.survey
     @feedback = current_user.feedbacks.build(params[:feedback])
+
+    @feedback.set_user_agent(request.env["HTTP_USER_AGENT"])
+
     @feedback.survey_id = @survey.id
 
     if @feedback.save
