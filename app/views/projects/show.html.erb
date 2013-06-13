@@ -19,10 +19,14 @@
       <% if @reg %>
         <%= button_to "Stop Testing", project_registration_path(@project, @reg),
           method: :delete, class: "btn btn-large btn-primary" %>
+          <hr>
+
+        <%= button_to "Access Website", url_with_protocol(@project.url), method: :get, class: "btn btn-large btn-success" %>
+
+        <%= button_to "Leave Feedback", @project.url, method: :get, class: "btn btn-large btn-info" %>
 
       <% else %>
-        <%= button_to "Sign up to Test", project_registrations_path(@project),
-          class: "btn btn-large btn-primary" %>
+        <%= button_to "Sign up to Test", project_registrations_path(@project), class: "btn btn-large btn-primary" %>
       <% end %>
     </div>
   </div>
