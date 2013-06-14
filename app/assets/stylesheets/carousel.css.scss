@@ -1,4 +1,6 @@
+
 #carousel {
+  position: relative;
   height: 405px;
   width: 720px;
   margin: 100px auto 40px auto;
@@ -6,7 +8,11 @@
 }
 
 #carousel > ul {
+  margin: 0;
+  left: 0px;
+  top: 0;
   list-style: none;
+  position: absolute;
 }
 
 #carousel > ul:after {
@@ -19,4 +25,11 @@
   float: left;
   height: 405px;
   width: 720px;
+  overflow: hidden;
+}
+
+#carousel > ul > li > img {
+  width: 100%;
+  height: auto;
+  display: block;
 }
