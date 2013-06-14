@@ -1,0 +1,22 @@
+#carousel {
+  height: 405px;
+  width: 720px;
+  margin: 100px auto 40px auto;
+  overflow: hidden;
+}
+
+#carousel > ul {
+  list-style: none;
+}
+
+#carousel > ul:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+#carousel > ul > li {
+  float: left;
+  height: 405px;
+  width: 720px;
+}

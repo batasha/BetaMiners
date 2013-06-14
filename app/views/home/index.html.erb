@@ -1,0 +1,67 @@
+<div class="container">
+  <section class="row">
+
+    <div id="carousel">
+      <ul>
+        <% for image in @images %>
+          <li> <%= image_tag image.url(:large) %> </li>
+        <% end %>
+      </ul>
+    </div>
+  </section>
+</div>
+
+<script>
+
+var Carousel = (function() {
+
+  var delay = 5000;
+  var $carousel = $("#carousel");
+  var itemsHolder = $carousel.find("> ul");
+  var items = itemsHolder.find("> li");
+  var itemWidth = items.first().width();
+  var currentItem = 0;
+
+  var init = function() {
+    itemsHolder.css({"width": (itemsHolder.length * itemWidth) + "px"});
+    start();
+  };
+
+  var start = function() {
+    loop();
+    var timerId = window.setInterval(loop, delay);
+  };
+
+  var stop = function() {
+    if(timerId) {
+      window.clearInterval(timerId);
+    }
+  };
+
+  var loop = function() {
+    currentItem++;
+
+    if (currentItem == itemsHolder.length) {
+      currentItem = 0;
+    }
+
+    move();
+  };
+
+  var move = function() {
+    var leftPosition = currentItem * itemWidth * -1;
+    itemsHolder.stop().animate({"left": leftPosition + "px"}, 1000);
+  }
+
+  return {
+    init: init,
+    start: start,
+    stop: stop
+  };
+})();
+
+$(document).ready(function() {
+  Carousel.init();
+});
+
+</script>
