@@ -1,10 +1,12 @@
 class ProjectsController < ApplicationController
+  skip_before_filter :authenticate_user!, only: :index
   def index
     @projects = Project.where(private: false).select(&:active_test)
   end
 
   def show
     @project = Project.find(params[:id])
+    @images = @project.screenshots.map(&:image)
     @test = @project.active_test || @project.test_phases.last
     @reg = current_user.registrations.where(project_id: @project.id)[0]
   end

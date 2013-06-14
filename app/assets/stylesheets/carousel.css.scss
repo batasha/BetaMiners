@@ -3,6 +3,7 @@
   font-family: Copperplate, "Copperplate Gothic Light", fantasy;
   text-align: center;
   margin: 40px 0 10px 0;
+  text-shadow: 2px 2px 0 #ecf0f1;
 }
 
 #carousel {
@@ -81,4 +82,62 @@
 
 .marketing {
   text-align: center;
+}
+
+#carousel.small {
+  position: relative;
+  height: 350px;
+  width: 620px;
+  margin: 20px auto 20px auto;
+}
+
+#carousel.small > ul {
+  margin: 0;
+  left: 0px;
+  top: 0;
+  list-style: none;
+  position: absolute;
+}
+
+#carousel.small > ul:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+#carousel.small > ul > li {
+  float: left;
+  height: 350px;
+  width: 620px;
+  overflow: hidden;
+}
+
+#carousel.small > ul > li > a > img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+#carousel.small > ul > li > a {
+  display: block;
+  margin: auto;
+}
+
+#carousel-nav.small{
+  height: 350px;
+  width: 620px;
+}
+
+#carousel-nav.small > button {
+  vertical-align: baseline;
+  position: relative;
+  top: 40%;
+  border: none;
+  background-color: inherit;
+  font-size: 100px;
+  font-weight: 100;
+  line-height: 60px;
+  color: white;
+  opacity: 0.5;
+  filter: alpha(opacity=50);
 }

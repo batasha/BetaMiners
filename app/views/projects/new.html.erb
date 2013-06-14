@@ -1,7 +1,6 @@
 <%= simple_form_for @project do |f| %>
-<section class="container">
-  <div class="row">
-      <h3>Enter Project Details</h3>
+  <section>
+      <h3 class="left-header">Enter Project Details</h3>
 
       <%= f.input :name %>
       <%= f.input :url %>
@@ -36,17 +35,18 @@
             <%= s.input :caption %>
             <hr>
           <% end %>
-        </div>
 
-          <h3>Create New Test Phase:</h3>
-          <%= f.simple_fields_for :test_phases do |t| %>
-            <%= t.input :name %>
-            <%= t.input :start_date, as: :date %>
-            <%= t.input :end_date, as: :date %>
-          <% end %>
+        <h3>Create New Test Phase:</h3>
+        <%= f.simple_fields_for :test_phases do |t| %>
+          <%= t.input :name %>
+          <%= t.input :start_date, as: :date %>
+          <%= t.input :end_date, as: :date %>
+        <% end %>
 
-      <%= f.button :submit %>
-    </div>
+    <%= f.button :submit %>
   </section>
+</div>
+
+
 <% end %>
 <%= tinymce %>

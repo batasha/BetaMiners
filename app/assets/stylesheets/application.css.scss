@@ -18,6 +18,59 @@ body {
   background-color: darkkhaki;
 }
 
+hr {
+  border-bottom-color: darkslategrey;
+  border-style: solid;
+  border-bottom-width: 1px;
+  border-top-color: white;
+  border-top-width: 1px;
+  color: #ecf0f1;
+  margin: 20px 0px;
+}
+
 .container {
-  background-color: white;
+  background-color: cornsilk;
+  padding: 0 20px;
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
+  border: 1px solid darkslategrey;
+}
+
+.left-header {
+  padding: 0 0 0 20px;
+}
+
+.navbar {
+  font-family: Copperplate, "Copperplate Gothic Light", fantasy;
+  font-size: 24px;
+}
+
+.navbar-inner {
+  background-image: linear-gradient(to bottom, darkgrey, darkslategrey);
+  border-color: #333;
+}
+
+.navbar .brand {
+  text-shadow: 0 2px 0 #777;
+  font-size: 36px;
+  font-weight: bold;
+  color:#333;
+  padding: 10px 40px;
+}
+
+.navbar .brand:hover {
+  text-shadow: 0 1px 0 white;
+}
+
+.navbar .nav > li {
+  padding: 0 20px;
+}
+
+.navbar .nav > li > a {
+  text-shadow: 0 2px 0 #777;
+  color:#333;
+}
+
+.navbar .nav > li > a:hover {
+  text-shadow: 0 1px 0 white;
 }
