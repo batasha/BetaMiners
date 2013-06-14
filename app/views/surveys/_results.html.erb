@@ -1,0 +1,23 @@
+<h3>
+  <%= "#{@survey.project.name} #{@survey.test_phase.name} Results" %>
+</h3>
+
+<ol class="span5">
+  <% @survey.questions.each do |question| %>
+  <h5><%= question.text %></h5>
+  <dl>
+    <% question.responses.each do |response| %>
+      <dt class="label-field span4"><%= response.text %></dt>
+      <dd class="clearfix"><%= response.count %></dd>
+    <% end %>
+  </dl>
+  <hr>
+  <% end %>
+</ol>
+
+<dl class="span4">
+  <dt class="label-field span3"><%= @survey.feedbacks.group("os").count.first[0] %></dt>
+  <dd class="clearfix"><%= @survey.feedbacks.group("os").count.first[1] %></dd>
+  <dt class="label-field span3"><%= @survey.feedbacks.group("browser").count.first[0] %></dt>
+  <dd class="clearfix"><%= @survey.feedbacks.group("browser").count.first[1] %></dd>
+</dl>
