@@ -11,7 +11,9 @@ BetaMiners::Application.routes.draw do
     resource :feedback
 
     resources :test_phases do
-      resource :survey
+      resource :survey do
+        get :results
+      end
     end
 
     get :control_panel

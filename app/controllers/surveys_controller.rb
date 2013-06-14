@@ -30,4 +30,15 @@ class SurveysController < ApplicationController
       render :show
     end
   end
+
+  def results
+    @test = TestPhase.find(params[:test_phase_id])
+    @survey = @test.survey
+
+    if request.xhr?
+      render partial: "results", locals: {survey: @survey}
+    else
+      render partial: :results
+    end
+  end
 end
