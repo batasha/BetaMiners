@@ -141,3 +141,18 @@
   opacity: 0.5;
   filter: alpha(opacity=50);
 }
+
+#carousel-nav.small > button:hover {
+  opacity: 1;
+  filter: alpha(opacity=100);
+}
+
+#carousel-nav.small > .prev {
+  float: left;
+  margin: 0 0 0 10px;
+}
+
+#carousel-nav.small > .next {
+  float: right;
+  margin: 0 10px 0 0;
+}

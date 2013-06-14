@@ -13,7 +13,6 @@ var Carousel = (function() {
 
   var init = function() {
     $itemsHolder.css({"width": ($items.length * itemWidth) + "px"});
-    console.log($items);
     bind();
     start();
   };
@@ -47,15 +46,17 @@ var Carousel = (function() {
   var previous = function() {
     currentItem--;
 
-    if (currentItem < 0) {
+    if (currentItem <= 0) {
       currentItem = $items.length - 1;
     }
+
+    move();
   };
 
   var move = function() {
     var leftPosition = currentItem * itemWidth * -1;
     $itemsHolder.stop().animate({"left": leftPosition + "px"}, 1000);
-  }
+  };
 
   return {
     init: init,
