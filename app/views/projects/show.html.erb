@@ -1,14 +1,25 @@
-<div class="container">
   <div class="row">
-    <header class="nav">
+    <header class="left-header">
       <h1><%= @project.name %></h1>
       <em>Development Phase: <%= @test.name %></em>
     </header>
 
     <div class="span8">
-      <div class="carousel">
-        <%= @project.screenshots.empty? ? image_tag("missing.png") : image_tag( @project.screenshots[1].image.url(:large)) %>
+      <div id="carousel" class="small">
+        <ul>
+          <% for image in @images %>
+            <li>
+              <%= image_tag image.url(:large) %>
+            </li>
+          <% end %>
+        </ul>
+
+        <div id="carousel-nav" class="small">
+            <button class="prev">‹</button>
+            <button class="next">›</button>
+        </div>
       </div>
+
       <article>
         <%= @project.description.html_safe %>
       </article>
@@ -30,4 +41,10 @@
       <% end %>
     </div>
   </div>
-</div>
+
+
+<script>
+  $(document).ready(function() {
+    Carousel.init();
+  });
+</script>
