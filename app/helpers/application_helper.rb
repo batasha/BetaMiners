@@ -1,6 +1,7 @@
 module ApplicationHelper
   def link_to_remove_fields(name, f)
-    f.hidden_field(:_destroy) + link_to_function(name, "removeFields(this)")
+    f.hidden_field(:_destroy) +
+    link_to_function(name, "removeFields(this)", class: "remove")
   end
 
   def link_to_add_fields(name, f, association)
@@ -12,7 +13,7 @@ module ApplicationHelper
     end
 
     link_to_function(name, "addFields(this, \"#{association}\",
-                     \"#{escape_javascript(fields)}\")")
+                     \"#{escape_javascript(fields)}\")", class: "add")
   end
 
   def url_with_protocol(url)

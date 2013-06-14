@@ -1,6 +1,6 @@
-  <section class="row well tabbable tabs-below">
-    <h2>Control Panel</h2>
-      <div class="tab-content">
+  <section class="row tabbable tabs-below">
+    <h2 class="left-header">Control Panel</h2>
+      <div class="tab-content left-header">
         <div class="tab-pane active" id="main">
           <div class="span8">
 
@@ -37,19 +37,22 @@
               <dt class="label-field span2">Date Range<dt>
               <dd class="clearfix"><%= test.start_date %> to <%= test.end_date %></dd>
             </dl>
+            <hr>
 
             <% if test.survey %>
+
               <%= link_to "View Feedback Form",
                 project_test_phase_survey_path(@project, test), remote: true,
                 id: "feedback-view" %>
-
+                <hr>
               <%= link_to "View Results",
                 results_project_test_phase_survey_path(@project, test),
                  remote: true, id: "results-view" %>
-
+                 <hr>
             <% else %>
               <%= link_to "Build Feedback Form",
                 new_project_test_phase_survey_path(@project, test, test.survey) %>
+                <hr>
 
             <% end %>
           </div>

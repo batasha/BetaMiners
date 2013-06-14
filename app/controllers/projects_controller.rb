@@ -1,5 +1,5 @@
 class ProjectsController < ApplicationController
-  skip_before_filter :authenticate_user!, only: :index
+  skip_before_filter :authenticate_user!, only: [:index]
   def index
     @projects = Project.where(private: false).select(&:active_test)
   end
