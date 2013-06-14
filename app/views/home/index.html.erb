@@ -1,16 +1,18 @@
 <div class="container">
-  <section class="row">
-
+  <div class="row">
+    <h1>Beta Miners</h1>
     <div id="carousel">
       <ul>
-        <% for image in @images %>
-          <li> <%= image_tag image.url(:large) %> </li>
+        <% for screen in @screens %>
+          <li>
+            <%= link_to image_tag(screen.image.url(:large)),
+                project_path(screen.project) %>
+          </li>
         <% end %>
       </ul>
     </div>
-  </section>
+  </div>
 </div>
-
 <script>
 
 var Carousel = (function() {
@@ -20,28 +22,34 @@ var Carousel = (function() {
   var itemsHolder = $carousel.find("> ul");
   var items = itemsHolder.find("> li");
   var itemWidth = items.first().width();
-  var currentItem = 0;
+  var currentItem = -1;
+  var timerId;
 
   var init = function() {
-    itemsHolder.css({"width": (itemsHolder.length * itemWidth) + "px"});
+    itemsHolder.css({"width": (items.length * itemWidth) + "px"});
+    console.log(itemsHolder.length);
+    console.log(itemWidth);
     start();
   };
 
   var start = function() {
     loop();
-    var timerId = window.setInterval(loop, delay);
+    console.log("start");
+    timerId = window.setInterval(loop, delay);
   };
 
   var stop = function() {
     if(timerId) {
+      console.log("stop");
       window.clearInterval(timerId);
     }
   };
 
   var loop = function() {
     currentItem++;
+    console.log("loop");
 
-    if (currentItem == itemsHolder.length) {
+    if (currentItem == items.length) {
       currentItem = 0;
     }
 
@@ -49,12 +57,15 @@ var Carousel = (function() {
   };
 
   var move = function() {
+    console.log(currentItem);
+
     var leftPosition = currentItem * itemWidth * -1;
     itemsHolder.stop().animate({"left": leftPosition + "px"}, 1000);
   }
 
   return {
     init: init,
+    loop: loop,
     start: start,
     stop: stop
   };

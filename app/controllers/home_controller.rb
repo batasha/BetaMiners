@@ -1,5 +1,7 @@
 class HomeController < ApplicationController
+  skip_before_filter :authenticate_user!
+
   def index
-    @images = Screenshot.all.map(&:image)
+    @screens = Screenshot.includes(:project).all
   end
 end
