@@ -3,10 +3,8 @@ class SurveysController < ApplicationController
     @test = TestPhase.find(params[:test_phase_id])
     @survey = @test.build_survey
 
-    3.times do
-      question = @survey.questions.build
-      4.times {question.responses.build}
-    end
+    question = @survey.questions.build
+    4.times {question.responses.build}
   end
 
   def create

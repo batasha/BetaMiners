@@ -8,7 +8,8 @@ class Project < ActiveRecord::Base
   accepts_nested_attributes_for :screenshots, reject_if: :all_blank
 
   has_many :test_phases
-  accepts_nested_attributes_for :test_phases, reject_if: :all_blank
+  accepts_nested_attributes_for :test_phases,
+        reject_if: proc { |attributes| attributes['name'].blank?}
 
   has_many :registrations, dependent: :destroy
   has_many :testers, through: :registrations, class_name: "User"
@@ -17,7 +18,9 @@ class Project < ActiveRecord::Base
                     default_url: "missing.png"
 
   def active_test
-    self.test_phases.find {|test| test.status == "active"}
+    self.test_phases.order(:start_date).find do |test|
+     test.status == "active" || test.status =="pending"
+    end
   end
 
   def short_desc

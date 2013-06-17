@@ -1,12 +1,22 @@
 <div class="fields">
-  <%= f.input :text, label: "Question" %>
-  <%= f.hidden_field :_destroy %>
-  <%= link_to_remove_fields "Remove", f %>
+  <div class="control-group">
+    <%= f.label :text, "Question", class: "control-label" %>
 
+    <div class="controls">
+      <%= f.input_field :text %>
+      <%= f.hidden_field :_destroy %>
+      <%= link_to_remove_fields "Remove", f %>
+    </div>
+  </div>
 
-  <%= f.simple_fields_for :responses do |r| %>
-    <%= render "responses", f: r %>
-  <% end %>
+  <div class="responses">
+    <%= f.simple_fields_for :responses do |r| %>
+      <%= render "responses", f: r %>
+    <% end %>
 
-  <div class="add"><%= link_to_add_fields "Add Response", f, :responses %></div>
+    <div class="add control-label">
+      <%= link_to_add_fields "Add Response", f, :responses %>
+    </div>
+  </div>
+
 </div>
