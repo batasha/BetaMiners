@@ -1,6 +1,6 @@
-  <section class="row well tabbable tabs-below">
+  <section class="row">
     <%= simple_form_for @feedback, url: project_feedback_path(@project) do |f| %>
-    <h3>
+    <h3 class="left-header">
       <%= "#{@project.name} #{@test.name} Feedback" %>
     </h3>
 

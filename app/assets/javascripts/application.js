@@ -18,12 +18,12 @@
 
 function removeFields(link) {
   $(link).prev("input[type=hidden]").val("1");
-  $(link).closest(".fields").hide();
+  $(link).closest(".fields").fadeOut(300);
 }
 
 function addFields(link, association, content) {
   var newId = new Date().getTime();
   var regEx = new RegExp("new_" + association, 'g');
-  console.log($(link).parent());
-  $(link).parent().before(content.replace(regEx, newId));
+  $(link).parent().before(content.replace(regEx, newId)).parent(":last-child").hide().fadeIn();
+  $(link + ":last-child").hide().fadeIn();
 }

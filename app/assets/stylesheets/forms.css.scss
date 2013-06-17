@@ -1,0 +1,39 @@
+.survey-form .control-group input {
+  width: 400px;
+  display: block;
+  float: left;
+}
+
+.survey-form .control-label {
+  width: 120px;
+  display: block;
+  float: left;
+}
+
+.survey-form .remove {
+  float: left;
+  padding: 5px 0 0 20px;
+  vertical-align: middle;
+  height: 20px;
+  line-height: 20px;
+  margin-bottom: 5px;
+  font-style: italic;
+  font-size: 13px;
+}
+
+.survey-form .responses .control-label {
+  width: 160px;
+}
+
+.responses {
+  padding: 20px 0 40px 0;
+}
+
+.responses .control-group {
+  padding: 10px 0;
+  margin: 10px 0;
+}
+
+.add {
+  font-style: italic;
+}

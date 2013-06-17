@@ -1,12 +1,14 @@
-<h3 class="left-header">Enter Survey Details</h3>
+<section class="survey-form">
+  <h3 class="left-header">Enter Survey Details</h3>
 
-<%= simple_form_for @survey, url: project_test_phase_survey_path(@test.project_id, @test) do |f| %>
+  <%= simple_form_for @survey, url: project_test_phase_survey_path(@test.project_id, @test) do |f| %>
 
-  <%= f.simple_fields_for :questions do |q| %>
-    <%= render "questions", f: q %>
+    <%= f.simple_fields_for :questions do |q| %>
+      <%= render "questions", f: q %>
+    <% end %>
+
+    <p><%= link_to_add_fields "Add Question", f, :questions %></p>
+
+    <%= f.button :submit %>
   <% end %>
-
-  <p><%= link_to_add_fields "Add Question", f, :questions %></p>
-
-  <%= f.button :submit %>
-<% end %>
+</div>
