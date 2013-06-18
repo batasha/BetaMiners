@@ -37,7 +37,7 @@ class User < ActiveRecord::Base
                   :first_name, :last_name, :provider, :uid, :access_token,
                   :profile_attributes, :picture
 
-  has_one :profile, dependent: :destroy
+  has_one :profile, dependent: :destroy, inverse_of: :user
   accepts_nested_attributes_for :profile
 
   has_many :projects, dependent: :destroy
