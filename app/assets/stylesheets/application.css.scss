@@ -28,13 +28,21 @@ hr {
   margin: 20px 0px;
 }
 
+ol {
+  margin: 20px 60px;
+}
+
+ol > li {
+  padding: 10px 0;
+}
+
 form {
   padding: 20px;
 }
 
 .container {
   background-color: cornsilk;
-  padding: 0 20px;
+  padding: 20px;
   border-top-right-radius: 10px;
   border-top-left-radius: 10px;
   border: 1px solid darkslategrey;
@@ -56,9 +64,6 @@ form {
   padding: 20px;
 }
 
-.remove {
-  float: left;
-}
 
 .navbar {
   font-family: Copperplate, "Copperplate Gothic Light", fantasy;
