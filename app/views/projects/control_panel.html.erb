@@ -21,7 +21,7 @@
             <h4>Screenshots</h4>
             <hr>
             <% @screenshots.each do |img| %>
-              <%= image_tag img.url(:thumb) %>
+              <%= image_tag img.url(:thumb), class: "screenshot" %>
               <hr>
             <% end %>
           </div>
