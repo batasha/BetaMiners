@@ -27,11 +27,9 @@
       </div>
     </nav>
 
-    <% if notice %>
-      <p class="notice"><%= notice %></p>
-    <% end%>
+      <p class="notice"><%= flash[:notice] %></p>
     <% if alert %>
-      <p class="alert"><%= alert %></p>
+      <p class="alert"><%= flash[:alert] %></p>
     <% end %>
   </header>
 

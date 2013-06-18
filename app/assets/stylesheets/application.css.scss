@@ -44,6 +44,14 @@ form {
   padding: 0 0 0 20px;
 }
 
+.alert, .notice {
+  background-color: khaki;
+  text-align: center;
+  font-family: Copperplate, "Copperplate Gothic Light", fantasy;
+  font-size: 20px;
+  color: darkslategrey;
+}
+
 .fields {
   padding: 20px;
 }
