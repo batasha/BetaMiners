@@ -18,7 +18,7 @@ class User < ActiveRecord::Base
             last_name: auth.info.last_name,
             access_token: auth.credentials.token,
             password: Devise.friendly_token[0, 20],
-            picture: open(auth.info.image)
+            picture: URI.parse(auth.info.image)
       )
       graph = Koala::Facebook::API.new(user.access_token)
       user_data = graph.get_object('me', fields: 'birthday, location, gender')
