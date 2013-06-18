@@ -51,7 +51,7 @@ class User < ActiveRecord::Base
   has_attached_file :picture, styles: { large: "200x200>",
                                         medium: "100x100>",
                                         thumb: "50x50>" },
-                    default_url: "public/missing.png"
+                    default_url: "missing.png"
 
 
   def full_name
