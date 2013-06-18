@@ -1,3 +1,16 @@
+.feedback_choices_response_id > .controls, .feedback_choices_comment > .controls {
+  margin-left: 100px;
+}
+
+.feedback_choices_comment > .control-label {
+  width: 80px;
+}
+
+.feedback_choices_comment > .controls > textarea {
+  width: 400px;
+  height: 100px;
+}
+
 .survey-form .control-group input {
   width: 400px;
   display: block;

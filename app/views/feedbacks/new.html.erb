@@ -7,16 +7,16 @@
     <ol>
       <% @survey.questions.each do |question| %>
       <li><%= question.text %></li>
-      <ul>
+
         <%= f.fields_for :choices do |c| %>
-          <%= c.input :response_id, label: "", as: :radio_buttons,
+          <%= c.input :response_id, label: false, as: :radio_buttons,
             collection: question.responses, label_method: :text %>
-          <%= c.input :comment %>
+          <%= c.input :comment, size: "400x20" %>
         <% end %>
-      </ul>
+
       <% end %>
     </ol>
 
-    <%= f.button :submit %>
+    <%= f.button :submit, "Send Feedback" %>
     <% end %>
   </section>
