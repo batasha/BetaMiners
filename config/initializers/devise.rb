@@ -225,6 +225,7 @@ Devise.setup do |config|
 
   config.omniauth :facebook, ENV['APP_ID'], ENV['APP_SECRET'],
     {scope: 'email, offline_access, user_birthday, user_location',
+      display: 'popup', image_size: :large,
     client_options: {ssl: {ca_file: '/usr/lib/ssl/certs/ca-certificates.crt'}}}
 
 

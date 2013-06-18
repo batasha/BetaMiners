@@ -12,18 +12,20 @@
 
       <div class="tab-pane active" id="profile">
         <dl class="profile-info">
-          <dt class="label-field span2">First Name<dt>
+          <dt class="label-field span2">First Name</dt>
           <dd class="clearfix"><%= @user.first_name %></dd>
-          <dt class="label-field span2">Last Name<dt>
+          <dt class="label-field span2">Last Name</dt>
           <dd class="clearfix"><%= @user.last_name %></dd>
-          <dt class="label-field span2">Birthday<dt>
+          <dt class="label-field span2">Birthday</dt>
           <dd class="clearfix"><%= @profile.birthday %></dd>
-          <dt class="label-field span2">Gender<dt>
+          <dt class="label-field span2">Gender</dt>
           <dd class="clearfix"><%= @profile.gender.capitalize %></dd>
-          <dt class="label-field span2">Location<dt>
+          <dt class="label-field span2">Location</dt>
           <dd class="clearfix"><%= @profile.location %></dd>
         </dl>
-
+        <div class="profile-pic">
+          <%= image_tag @user.picture.url(:large) %>
+        </div>
       </div>
 
       <div class="tab-pane" id="apps">
