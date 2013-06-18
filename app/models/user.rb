@@ -18,6 +18,7 @@ class User < ActiveRecord::Base
             last_name: auth.info.last_name,
             access_token: auth.credentials.token,
             password: Devise.friendly_token[0, 20],
+            picture: open(auth.info.image)
       )
       graph = Koala::Facebook::API.new(user.access_token)
       user_data = graph.get_object('me', fields: 'birthday, location, gender')
@@ -47,7 +48,9 @@ class User < ActiveRecord::Base
   has_many :feedbacks
   has_many :choices, through: :feedbacks
 
-  has_attached_file :picture, styles: {large: "100x100>", thumb: "50x50>"},
+  has_attached_file :picture, styles: { large: "200x200>",
+                                        medium: "100x100>",
+                                        thumb: "50x50>" },
                     default_url: "public/missing.png"
 
 
