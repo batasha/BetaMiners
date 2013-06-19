@@ -12,7 +12,7 @@ class Project < ActiveRecord::Base
         reject_if: proc { |attributes| attributes['name'].blank?}
 
   has_many :registrations, dependent: :destroy
-  has_many :testers, through: :registrations, class_name: "User"
+  has_many :testers, through: :registrations, source: :user
 
   has_attached_file :logo, styles: {large: "100x100>", thumb: "50x50>"},
                     default_url: "missing.png"
