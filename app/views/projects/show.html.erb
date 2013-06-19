@@ -26,29 +26,9 @@
     </div>
 
     <div class="span3 offset1">
-
-      <% if @reg %>
-        <%= button_to "Stop Testing", project_registration_path(@project, @reg),
-          method: :delete, class: "btn btn-large btn-primary" %>
-          <hr>
-
-        <%= button_to "Access Website", url_with_protocol(@project.url),
-            method: :get, class: "btn btn-large btn-success",
-            disabled: (@test.status != "active") %>
-
-
-        <%= button_to "Leave Feedback", new_project_feedback_path(@project),
-            method: :get, class: "btn btn-large btn-info",
-            disabled: (@test.status != "active") %>
-
-        <% unless @test.status == "active" %>
-          <div class="marketing"><em>This app will be open for testing on
-          <%= date_format(@test.start_date) %></em></div>
-        <% end %>
-
-      <% else %>
-        <%= button_to "Sign up to Test", project_registrations_path(@project), class: "btn btn-large btn-primary" %>
-      <% end %>
+      <div class="buttons">
+        <%= render partial: "buttons", locals: {reg: @reg, project: @project, test: @test} %>
+      </div>
 
       <div class="testers">
         <% for tester in @testers %>
@@ -140,5 +120,9 @@
 
   $(document).ready(function() {
     Carousel.init();
+
+    $(".button_to").on("ajax:success", function(event, data) {
+      $(".buttons").html(data);
+    });
   });
 </script>

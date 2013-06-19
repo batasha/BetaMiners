@@ -34,7 +34,7 @@ class SurveysController < ApplicationController
     @survey = @test.survey
 
     if request.xhr?
-      render partial: "results", locals: {survey: @survey}
+      render partial: :results, locals: {survey: @survey}
     else
       render partial: :results
     end
