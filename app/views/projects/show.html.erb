@@ -39,6 +39,21 @@
       <% else %>
         <%= button_to "Sign up to Test", project_registrations_path(@project), class: "btn btn-large btn-primary" %>
       <% end %>
+
+      <div class="testers">
+        <% for tester in @testers %>
+          <div class="user-thumb">
+            <%= image_tag tester.picture.url(:thumb) %>
+          </div>
+        <% end %>
+
+        <% if @tester_count > 16 %>
+          <span>
+            <em>and <%= @tester_count - 16 %> other testers</em>
+          </span>
+        <% end %>
+
+      </div>
     </div>
   </div>
 

@@ -5,10 +5,12 @@ class ProjectsController < ApplicationController
   end
 
   def show
-    @project = Project.includes(:test_phases, :screenshots).find(params[:id])
+    @project = Project.includes(:test_phases, :screenshots, :testers).find(params[:id])
     @images = @project.screenshots.map(&:image)
     @test = @project.active_test
     @reg = current_user.registrations.where(project_id: @project.id)[0]
+    @testers = @project.testers.sample(16)
+    @tester_count = @project.testers.count
   end
 
   def new
