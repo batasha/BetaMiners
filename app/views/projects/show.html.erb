@@ -32,9 +32,19 @@
           method: :delete, class: "btn btn-large btn-primary" %>
           <hr>
 
-        <%= button_to "Access Website", url_with_protocol(@project.url), method: :get, class: "btn btn-large btn-success" %>
+        <%= button_to "Access Website", url_with_protocol(@project.url),
+            method: :get, class: "btn btn-large btn-success",
+            disabled: (@test.status != "active") %>
 
-        <%= button_to "Leave Feedback", new_project_feedback_path(@project), method: :get, class: "btn btn-large btn-info" %>
+
+        <%= button_to "Leave Feedback", new_project_feedback_path(@project),
+            method: :get, class: "btn btn-large btn-info",
+            disabled: (@test.status != "active") %>
+
+        <% unless @test.status == "active" %>
+          <div class="marketing"><em>This app will be open for testing on
+          <%= date_format(@test.start_date) %></em></div>
+        <% end %>
 
       <% else %>
         <%= button_to "Sign up to Test", project_registrations_path(@project), class: "btn btn-large btn-primary" %>
