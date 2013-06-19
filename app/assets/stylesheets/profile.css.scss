@@ -6,8 +6,17 @@
 
 .profile-pic {
   float: right;
+  width: 200px;
+  height: 200px;
+  line-height: 200px;
+  text-align: center;
   margin-right: 100px;
   border: 5px double darkslategrey;
+}
+
+.profile-pic > img {
+  margin: auto;
+  vertical-align: middle;
 }
 
 .label-field {
