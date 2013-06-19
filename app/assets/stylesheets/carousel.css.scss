@@ -33,6 +33,8 @@
   float: left;
   height: 405px;
   width: 720px;
+  line-height: 405px;
+  text-align: center;
   overflow: hidden;
 }
 
@@ -45,6 +47,7 @@
 #carousel > ul > li > a {
   display: block;
   margin: auto;
+  vertical-align: middle;
 }
 
 #carousel-nav {
@@ -55,7 +58,7 @@
 #carousel-nav > button {
   vertical-align: baseline;
   position: relative;
-  top: 175px;
+  top: 40%;
   border: none;
   background-color: inherit;
   font-size: 100px;
@@ -86,43 +89,15 @@
 }
 
 #carousel.small {
-  position: relative;
   height: 350px;
   width: 620px;
   margin: 20px auto 20px auto;
 }
 
-#carousel.small > ul {
-  margin: 0;
-  left: 0px;
-  top: 0;
-  list-style: none;
-  position: absolute;
-  border: 1px solid darkgrey;
-}
-
-#carousel.small > ul:after {
-  content: "";
-  display: table;
-  clear: both;
-}
-
 #carousel.small > ul > li {
-  float: left;
   height: 350px;
   width: 620px;
-  overflow: hidden;
-}
-
-#carousel.small > ul > li > a > img {
-  width: 100%;
-  height: auto;
-  display: block;
-}
-
-#carousel.small > ul > li > a {
-  display: block;
-  margin: auto;
+  line-height: 350px;
 }
 
 #carousel-nav.small{
@@ -130,31 +105,11 @@
   width: 620px;
 }
 
-#carousel-nav.small > button {
-  vertical-align: baseline;
-  position: relative;
-  top: 40%;
-  border: none;
-  background-color: inherit;
-  font-size: 100px;
-  font-weight: 100;
-  line-height: 60px;
-  color: white;
-  opacity: 0.5;
-  filter: alpha(opacity=50);
-}
-
-#carousel-nav.small > button:hover {
-  opacity: 1;
-  filter: alpha(opacity=100);
-}
 
 #carousel-nav.small > .prev {
-  float: left;
   margin: 0 0 0 10px;
 }
 
 #carousel-nav.small > .next {
-  float: right;
   margin: 0 10px 0 0;
 }
