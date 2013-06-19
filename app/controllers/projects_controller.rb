@@ -23,7 +23,7 @@ class ProjectsController < ApplicationController
     @project = current_user.projects.build(params[:project])
 
     if @project.save
-      redirect_to @project
+      redirect_to project_control_panel_path(@project)
     else
       render :new
     end
