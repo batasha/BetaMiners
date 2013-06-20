@@ -1,0 +1,38 @@
+<%= simple_form_for @project do |f| %>
+<%= f.input :name %>
+<%= f.input :url %>
+<%= f.input :category, collection: CATEGORIES %>
+
+<div class="control-group text optional project_description">
+  <%= f.label :description, class: "text optional control-label" %>
+  <div class="controls">
+    <%= f.text_area :description, class: "tinymce" %>
+  </div>
+</div>
+
+<%= f.input :private %>
+
+<div class="control-group string optional">
+  <%= f.label :logo, class: "string optional control-label" %>
+  <div class="controls">
+    <%= f.file_field :logo, class: "string optional" %>
+  </div>
+</div>
+
+<h3>Upload Screenshots:</h3>
+<hr>
+
+    <%= f.simple_fields_for :screenshots do |s| %>
+      <div class="control-group string optional">
+        <%= s.label :image, class: "string optional control-label" %>
+        <div class="controls">
+          <%= s.file_field :image, class: "string optional" %>
+        </div>
+      </div>
+      <div><%= image_tag s.object.image.url(:thumb), class: "screenshot" %></div>
+      <%= s.input :caption %>
+      <hr>
+    <% end %>
+    <%= f.button :submit %>
+<% end %>
+<%= tinymce %>

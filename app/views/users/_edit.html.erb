@@ -1,0 +1,24 @@
+<%= simple_form_for @user do |f| %>
+  <%= f.input :first_name, required: true %>
+  <%= f.input :last_name, required: true %>
+
+  <%= f.simple_fields_for :profile do |profile| %>
+
+
+
+      <%= profile.input :birthday, as: :date,
+          start_year: Date.today.year - 90,
+          end_year: Date.today.year - 12, order: [:month, :day, :year] %>
+
+
+      <%= profile.input :gender, as: :radio_buttons,
+          collection: [["Male", "male"], ["Female", "female"]] %>
+
+
+    <%= profile.input :location %>
+    <%= f.input :picture, label: "Upload a new picture" %>
+
+  <% end %>
+
+  <%= f.button :submit %>
+<% end %>

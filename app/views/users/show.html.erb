@@ -11,74 +11,15 @@
     <div class="tab-content">
 
       <div class="tab-pane active" id="profile">
-        <dl class="profile-info">
-          <dt class="label-field span2">First Name</dt>
-          <dd class="clearfix"><%= @user.first_name %></dd>
-          <dt class="label-field span2">Last Name</dt>
-          <dd class="clearfix"><%= @user.last_name %></dd>
-          <dt class="label-field span2">Birthday</dt>
-          <dd class="clearfix"><%= date_format(@profile.birthday) %></dd>
-          <dt class="label-field span2">Gender</dt>
-          <dd class="clearfix"><%= @profile.gender.capitalize %></dd>
-          <dt class="label-field span2">Location</dt>
-          <dd class="clearfix"><%= @profile.location %></dd>
-        </dl>
-        <div class="profile-pic">
-          <%= image_tag @user.picture.url(:large) %>
-        </div>
+        <%= render "profile" %>
       </div>
 
       <div class="tab-pane" id="apps">
-
-        <div class="tabbable tabs-left">
-          <ul class="nav nav-tabs">
-            <li class="active">
-              <a href="#my_apps" data-toggle="tab">Apps I Built</a>
-            </li>
-            <li>
-              <a href="#apps_to_test" data-toggle="tab">Apps I'm Testing</a>
-            </li>
-          </ul>
-
-          <div class="tab-content">
-            <div class="tab-pane active" id="my_apps">
-              <h3>My Apps</h3>
-              <%= render partial: "projects/list", locals: {projects: @projects}%>
-            </div>
-            <div class="tab-pane" id="apps_to_test">
-              <%= render partial: "projects/list", locals: {projects: @test_projects}%>
-            </div>
-          </div>
-        </div>
+        <%= render "apps" %>
       </div>
 
-      <div class="tab-pane" id="platforms">Platforms</div>
-
       <div class="tab-pane" id="settings">
-        <%= simple_form_for @user do |f| %>
-          <%= f.input :first_name, required: true %>
-          <%= f.input :last_name, required: true %>
-
-          <%= f.simple_fields_for :profile do |profile| %>
-
-
-
-              <%= profile.input :birthday, as: :date,
-                  start_year: Date.today.year - 90,
-                  end_year: Date.today.year - 12, order: [:month, :day, :year] %>
-
-
-              <%= profile.input :gender, as: :radio_buttons,
-                  collection: [["Male", "male"], ["Female", "female"]] %>
-
-
-            <%= profile.input :location %>
-            <%= f.input :picture, label: "Upload a new picture" %>
-
-          <% end %>
-
-          <%= f.button :submit %>
-        <% end %>
+        <%= render "edit" %>
       </div>
     </div>
   </section >
