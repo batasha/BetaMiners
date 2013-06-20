@@ -25,32 +25,17 @@
       </article>
     </div>
 
-    <div class="span3 offset1">
-      <div class="buttons">
-        <%= render partial: "buttons", locals: {reg: @reg, project: @project, test: @test} %>
-      </div>
+    <div class="sidebar span3 offset1">
 
-      <div class="testers">
-        <% for tester in @testers %>
-          <div class="user-thumb">
-            <%= image_tag tester.picture.url(:thumb) %>
-          </div>
-        <% end %>
+        <%= render partial: "sidebar",
+                    locals: {reg: @reg,
+                             project: @project,
+                             test: @test,
+                             testers: @testers,
+                             tester_count: @tester_count} %>
 
-        <% if @tester_count > 16 %>
-          <span>
-            <em>and <%= @tester_count - 16 %> other testers</em>
-          </span>
-        <% end %>
 
-      </div>
     </div>
   </div>
 
 <%= javascript_include_tag "carousel" %>
-<script>
-
-  $(document).ready(function() {
-    Carousel.init();
-  });
-</script>

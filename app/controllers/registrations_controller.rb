@@ -5,10 +5,12 @@ class RegistrationsController < ApplicationController
 
     if reg.save
       if request.xhr?
-        render partial: "projects/buttons",
+        render partial: "projects/sidebar",
                 locals: { project: project,
                           reg: reg,
-                          test: project.active_test }
+                          test: project.active_test,
+                          testers: project.testers.sample(16),
+                          tester_count: project.testers.count }
       else
         redirect_to :back
       end
@@ -23,10 +25,12 @@ class RegistrationsController < ApplicationController
     old_reg.destroy
 
       if request.xhr?
-        render partial: "projects/buttons",
+        render partial: "projects/sidebar",
                 locals: { project: project,
                           reg: nil,
-                          test: project.active_test }
+                          test: project.active_test,
+                          testers: project.testers.sample(16),
+                          tester_count: project.testers.count }
 
       else
         redirect_to :back
