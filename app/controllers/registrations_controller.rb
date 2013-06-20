@@ -25,6 +25,7 @@ class RegistrationsController < ApplicationController
     old_reg.destroy
 
       if request.xhr?
+        flash.now[:notice] = "No longer testing!"
         render partial: "projects/sidebar",
                 locals: { project: project,
                           reg: nil,
