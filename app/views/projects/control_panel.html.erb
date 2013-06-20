@@ -1,64 +1,20 @@
   <section class="row tabbable tabs-below">
+
     <h2 class="left-header">Control Panel</h2>
       <div class="tab-content left-header">
+
         <div class="tab-pane active" id="main">
-          <div class="span8">
-
-            <dl class="project-info">
-              <dt class="label-field span2">Name<dt>
-              <dd class="clearfix"><%= @project.name %></dd>
-              <dt class="label-field span2">URL<dt>
-              <dd class="clearfix"><%= @project.url %></dd>
-              <dt class="label-field span2">Category<dt>
-              <dd class="clearfix"><%= @project.category %></dd>
-              <dt class="label-field span2">Description<dt><br />
-              <dd class="clearfix"><%= @project.description.html_safe %></dd>
-            </dl>
-
-          </div>
-
-          <div class="span3">
-            <h4>Screenshots</h4>
-            <hr>
-            <% @screenshots.each do |img| %>
-              <%= image_tag img.url(:thumb), class: "screenshot" %>
-              <hr>
-            <% end %>
-          </div>
+          <%= render partial: "project_info",
+                      locals: {project: @project, screenshots: @screenshots} %>
         </div>
 
         <% @tests.each do |test| %>
+
           <div class="tab-pane" id="test-<%= test.id %>">
-            <h4><%= test.name %></h4>
-
-            <dl class="test-info">
-              <dt class="label-field span2">Name<dt>
-              <dd class="clearfix"><%= test.name %></dd>
-              <dt class="label-field span2">Date Range<dt>
-              <dd class="clearfix">
-                <%= "#{date_format(test.start_date)} to
-                     #{date_format(test.end_date)}" %>
-              </dd>
-            </dl>
-            <hr>
-
-            <% if test.survey %>
-
-              <%= link_to "View Feedback Form",
-                project_test_phase_survey_path(@project, test), remote: true,
-                id: "feedback-view" %>
-                <hr>
-              <%= link_to "View Results",
-                results_project_test_phase_survey_path(@project, test),
-                 remote: true, id: "results-view" %>
-                 <hr>
-            <% else %>
-              <%= link_to "Build Feedback Form",
-                new_project_test_phase_survey_path(@project, test, test.survey) %>
-                <hr>
-
-            <% end %>
+            <%= render partial: "test_phases/view",
+                        locals: {test: test, project: @project} %>
           </div>
+
         <% end %>
 
         <div class="tab-pane" id="new_test">
@@ -83,11 +39,11 @@
 
 $(document).ready(function() {
   $("#feedback-view").on("ajax:success", function(event, data) {
-    $("section.row").html(data);
+    $("section.row > div > div.active").html(data);
   });
 
   $("#results-view").on("ajax:success", function(event, data) {
-    $("section.row").html(data);
+    $("section.row > div > div.active").html(data);
   });
 });
 
