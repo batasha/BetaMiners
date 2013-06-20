@@ -11,6 +11,13 @@
     <dd class="clearfix"><%= project.description.html_safe %></dd>
   </dl>
 
+  <hr>
+  <%= link_to "Public Page", project_path(project) %>
+  <hr>
+  <%= link_to "Edit", edit_project_path(project), remote: true, id: "edit-project" %>
+  <hr>
+
+
 </div>
 
 <div class="span3">

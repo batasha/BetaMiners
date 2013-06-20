@@ -6,11 +6,11 @@
     <div class="row-fluid clearfix">
       <div class="span1">
         <%= link_to image_tag(project.logo.url(:thumb), alt: project.name),
-          project_control_panel_path(project) %>
+          path_with_ownership_test(project) %>
       </div>
 
       <div class="span2">
-        <h4><%= link_to project.name, project_control_panel_path(project) %></h4>
+        <h4><%= link_to project.name, path_with_ownership_test(project) %></h4>
         <em><%= project.category %></em>
       </div>
 

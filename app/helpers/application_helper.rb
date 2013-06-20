@@ -23,4 +23,12 @@ module ApplicationHelper
   def date_format(date)
     date.strftime('%B %-d, %Y')
   end
+
+  def path_with_ownership_test(project)
+    if project.user_id == current_user.id
+      project_control_panel_path(project)
+    else
+      project_path(project)
+    end
+  end
 end

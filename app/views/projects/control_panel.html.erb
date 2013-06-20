@@ -45,6 +45,10 @@ $(document).ready(function() {
   $("#results-view").on("ajax:success", function(event, data) {
     $("section.row > div > div.active").html(data);
   });
+
+  $("#edit-project").on("ajax:success", function(event, data) {
+    $("section.row > div > div.active").html(data);
+  });
 });
 
 </script>

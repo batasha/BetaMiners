@@ -1,0 +1,21 @@
+<dl class="profile-info">
+
+  <dt class="label-field span2">First Name</dt>
+  <dd class="clearfix"><%= @user.first_name %></dd>
+
+  <dt class="label-field span2">Last Name</dt>
+  <dd class="clearfix"><%= @user.last_name %></dd>
+
+  <dt class="label-field span2">Birthday</dt>
+  <dd class="clearfix"><%= date_format(@profile.birthday) %></dd>
+
+  <dt class="label-field span2">Gender</dt>
+  <dd class="clearfix"><%= @profile.gender.capitalize %></dd>
+
+  <dt class="label-field span2">Location</dt>
+  <dd class="clearfix"><%= @profile.location %></dd>
+
+</dl>
+<div class="profile-pic">
+  <%= image_tag @user.picture.url(:large) %>
+</div>

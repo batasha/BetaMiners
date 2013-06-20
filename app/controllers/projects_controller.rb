@@ -34,13 +34,28 @@ class ProjectsController < ApplicationController
     @tests = @project.test_phases.order(:start_date).select(&:id)
     @new_test = @project.test_phases.build
     @screenshots = @project.screenshots.map(&:image)
+  end
+
+  def edit
+    @project = Project.includes(:screenshots).find(params[:id])
+    @screenshots = @project.screenshots
 
     if request.xhr?
-      debugger
-
-      render partial: "test_phases/show", locals: {project: @project, test: test}
+      render partial: "edit"
     else
       render :control_panel
+    end
+
+  end
+
+  def update
+    @project = Project.find(params[:id])
+    @screenshots = @project.screenshots
+
+    if @project.update_attributes(params[:project])
+      render :control_panel
+    else
+      render :edit
     end
   end
 end
