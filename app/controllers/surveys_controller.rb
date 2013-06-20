@@ -23,7 +23,7 @@ class SurveysController < ApplicationController
     @survey = @test.survey
 
     if request.xhr?
-      render partial: "view", locals: {survey: @survey}
+      render partial: "view", locals: {survey: @survey, project: @test.project}
     else
       render :show
     end
@@ -34,9 +34,9 @@ class SurveysController < ApplicationController
     @survey = @test.survey
 
     if request.xhr?
-      render partial: :results, locals: {survey: @survey}
+      render partial: "results", locals: {survey: @survey}
     else
-      render partial: :results
+      render :results
     end
   end
 end

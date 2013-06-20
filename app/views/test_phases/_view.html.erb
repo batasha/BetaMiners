@@ -1,0 +1,30 @@
+<h4><%= test.name %></h4>
+
+<dl class="test-info">
+  <dt class="label-field span2">Name<dt>
+  <dd class="clearfix"><%= test.name %></dd>
+  <dt class="label-field span2">Date Range<dt>
+  <dd class="clearfix">
+    <%= "#{date_format(test.start_date)} to
+         #{date_format(test.end_date)}" %>
+  </dd>
+</dl>
+<hr>
+
+<% if test.survey %>
+
+  <%= link_to "View Feedback Form",
+    project_test_phase_survey_path(@project, test), remote: true,
+    id: "feedback-view" %>
+    <hr>
+  <%= link_to "View Results",
+    results_project_test_phase_survey_path(@project, test),
+     remote: true, id: "results-view" %>
+     <hr>
+
+<% else %>
+  <%= link_to "Build Feedback Form",
+    new_project_test_phase_survey_path(@project, test, test.survey) %>
+    <hr>
+
+<% end %>

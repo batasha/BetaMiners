@@ -1,4 +1,4 @@
-<h3>
+<h3 class="left-header">
   <%= "#{@survey.project.name} #{@survey.test_phase.name} Feedback" %>
 </h3>
 
@@ -12,3 +12,20 @@
   </ul>
   <% end %>
 </ol>
+
+<div>
+  <%= link_to "Back", project_test_phase_path(project, @survey.test_phase),
+      remote: true, id: "test-view" %>
+</div>
+
+
+<script>
+
+$(document).ready(function() {
+
+  $("#test-view").on("ajax:success", function(event, data) {
+    $("section.row > div > div.active").html(data);
+  });
+});
+
+</script>

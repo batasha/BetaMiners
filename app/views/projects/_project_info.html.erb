@@ -1,0 +1,23 @@
+<div class="span8">
+
+  <dl class="project-info">
+    <dt class="label-field span2">Name<dt>
+    <dd class="clearfix"><%= project.name %></dd>
+    <dt class="label-field span2">URL<dt>
+    <dd class="clearfix"><%= project.url %></dd>
+    <dt class="label-field span2">Category<dt>
+    <dd class="clearfix"><%= project.category %></dd>
+    <dt class="label-field span2">Description<dt><br />
+    <dd class="clearfix"><%= project.description.html_safe %></dd>
+  </dl>
+
+</div>
+
+<div class="span3">
+  <h4>Screenshots</h4>
+  <hr>
+  <% screenshots.each do |img| %>
+    <%= image_tag img.url(:thumb), class: "screenshot" %>
+    <hr>
+  <% end %>
+</div>
