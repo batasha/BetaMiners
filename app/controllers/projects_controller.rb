@@ -16,7 +16,7 @@ class ProjectsController < ApplicationController
   def new
     @project = current_user.projects.build
     @project.test_phases.build
-    3.times {@project.screenshots.build}
+    5.times {@project.screenshots.build}
   end
 
   def create
@@ -40,6 +40,9 @@ class ProjectsController < ApplicationController
     @project = Project.includes(:screenshots).find(params[:id])
     @screenshots = @project.screenshots
 
+    # => Allow upload of more screenshots if project has fewer than 5
+    (5 - @screenshots.count).times {@project.screenshots.build}
+
     if request.xhr?
       render partial: "edit"
     else
@@ -53,7 +56,14 @@ class ProjectsController < ApplicationController
     @screenshots = @project.screenshots
 
     if @project.update_attributes(params[:project])
-      render :control_panel
+      if request.xhr?
+        render partial: "project_info",
+                locals: {project: @project,
+                         screenshots: @screenshots.map(&:image)}
+      else
+        redirect_to project_control_panel_path(@project)
+      end
+
     else
       render :edit
     end

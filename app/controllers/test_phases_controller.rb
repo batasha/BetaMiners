@@ -9,9 +9,14 @@ class TestPhasesController < ApplicationController
     @test_phase = @project.test_phases.build(params[:test_phase])
 
     if @test_phase.save
-      redirect_to project_control_panel_path(@project)
+      if request.xhr?
+        render partial: "view", locals: {project: @project, test: @test_phase}
+      else
+        redirect_to project_control_panel_path(@project)
+      end
+
     else
-      render :back
+      render :new
     end
   end
 

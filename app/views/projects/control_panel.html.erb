@@ -34,21 +34,3 @@
         <li><a href="#new_test" data-toggle="tab">New Test Phase</a></li>
       </ul>
   </section>
-
-<script>
-
-$(document).ready(function() {
-  $("#feedback-view").on("ajax:success", function(event, data) {
-    $("section.row > div > div.active").html(data);
-  });
-
-  $("#results-view").on("ajax:success", function(event, data) {
-    $("section.row > div > div.active").html(data);
-  });
-
-  $("#edit-project").on("ajax:success", function(event, data) {
-    $("section.row > div > div.active").html(data);
-  });
-});
-
-</script>
