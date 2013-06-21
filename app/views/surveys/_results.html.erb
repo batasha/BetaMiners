@@ -8,25 +8,35 @@
 <% else %>
 
 <div class="clearfix">
-  <ol class="span5">
+  <ol class="span6">
     <% @survey.questions.each do |question| %>
-    <h5><%= question.text %></h5>
+    <h5 class="left-header"><%= question.text %></h5>
+
     <dl>
       <% question.responses.each do |response| %>
-        <dt class="label-field span4"><%= response.text %></dt>
+        <dt class="label-field span5"><%= response.text %></dt>
         <dd class="clearfix"><%= response.count %></dd>
       <% end %>
     </dl>
-    <a>Show Comments</a>
-    <hr>
+
+    <a class="comment-toggle">Show Comments</a>
     <div class="comments">
-      <% question.choices.each do |choice| %>
+      <% for choice in question.choices_with_comments %>
         <div class="comment">
-          <h5>Comment created at <%= choice.created_at %></h5>
-          <p><%= choice.comment %></p>
-          <h5>User response: <%= choice.response.text %></h5>
+          <div class="comment-body">
+            <p><%= choice.comment %></p>
+          </div>
+          <div class="comment-footer">
+            <em class="text-right">
+            <%= time_ago_in_words(choice.created_at) if choice.created_at %> ago
+            </em>
+          </div>
         </div>
       <% end %>
+    </div>
+
+    <hr>
+
     <% end %>
   </ol>
 
@@ -61,6 +71,19 @@ $(document).ready(function() {
 
   $("#test-view").on("ajax:success", function(event, data) {
     $("section.row > div > div.active").html(data);
+  });
+
+  $(".comment-toggle").on("click", function() {
+    var $this = $(this);
+
+    $this.next(".comments").slideToggle();
+    $this.toggleClass(".hide");
+
+    if ($this.hasClass(".hide")) {
+      $this.html("Hide Comments");
+    } else {
+      $this.html("Show Comments");
+    }
   });
 });
 

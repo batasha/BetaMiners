@@ -44,4 +44,14 @@ BetaMiners::Application.configure do
 
   # Expands the lines which load the assets
   config.assets.debug = true
+
+  config.after_initialize do
+    Bullet.enable = true
+    Bullet.alert = true
+    Bullet.bullet_logger = true
+    Bullet.console = true
+  #  Bullet.growl = true
+    Bullet.rails_logger = true
+  end
+
 end

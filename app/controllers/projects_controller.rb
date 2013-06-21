@@ -5,7 +5,7 @@ class ProjectsController < ApplicationController
   end
 
   def show
-    @project = Project.includes(:test_phases, :screenshots, :testers).find(params[:id])
+    @project = Project.includes(:screenshots, :testers).find(params[:id])
     @images = @project.screenshots.map(&:image)
     @test = @project.active_test
     @reg = current_user.registrations.where(project_id: @project.id)[0]
@@ -31,7 +31,7 @@ class ProjectsController < ApplicationController
 
   def control_panel
     @project = Project.find(params[:project_id])
-    @tests = @project.test_phases.order(:start_date).select(&:id)
+    @tests = @project.test_phases.includes(:survey).order(:start_date).select(&:id)
     @new_test = @project.test_phases.build
     @screenshots = @project.screenshots.map(&:image)
   end
