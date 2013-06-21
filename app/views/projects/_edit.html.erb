@@ -23,14 +23,24 @@
 <hr>
 
     <%= f.simple_fields_for :screenshots do |s| %>
-      <div class="control-group string optional">
-        <%= s.label :image, class: "string optional control-label" %>
-        <div class="controls">
-          <%= s.file_field :image, class: "string optional" %>
+
+      <div class="clearfix">
+        <div class="pull-left">
+          <div class="control-group string optional">
+            <%= s.label :image, class: "string optional control-label" %>
+
+            <div class="controls">
+              <%= s.file_field :image, class: "string optional" %>
+            </div>
+          </div>
+
+          <%= s.input :caption %>
+        </div>
+        <div class="screenshot-right pull-right">
+          <%= image_tag s.object.image.url(:thumb),
+              class: "screenshot" if s.object.id %>
         </div>
       </div>
-      <div><%= image_tag s.object.image.url(:thumb), class: "screenshot" %></div>
-      <%= s.input :caption %>
       <hr>
     <% end %>
     <%= f.button :submit, remote: true %>
