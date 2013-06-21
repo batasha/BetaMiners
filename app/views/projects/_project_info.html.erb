@@ -19,7 +19,6 @@
 
 
 </div>
-
 <div class="span3">
   <h4>Screenshots</h4>
   <hr>
@@ -28,3 +27,15 @@
     <hr>
   <% end %>
 </div>
+
+
+<script>
+
+$(document).ready(function() {
+
+  $("#edit-project").on("ajax:success", function(event, data) {
+    $("section.row > div > div.active").html(data);
+  });
+});
+
+</script>

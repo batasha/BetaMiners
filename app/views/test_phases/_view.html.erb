@@ -5,8 +5,7 @@
   <dd class="clearfix"><%= test.name %></dd>
   <dt class="label-field span2">Date Range<dt>
   <dd class="clearfix">
-    <%= "#{date_format(test.start_date)} to
-         #{date_format(test.end_date)}" %>
+    <%= "#{date_format(test.start_date)}—#{date_format(test.end_date)}" %>
   </dd>
 </dl>
 <hr>
@@ -28,3 +27,18 @@
     <hr>
 
 <% end %>
+
+
+<script>
+
+$(document).ready(function() {
+  $("#feedback-view").on("ajax:success", function(event, data) {
+    $("section.row > div > div.active").html(data);
+  });
+
+  $("#results-view").on("ajax:success", function(event, data) {
+    $("section.row > div > div.active").html(data);
+  });
+});
+
+</script>

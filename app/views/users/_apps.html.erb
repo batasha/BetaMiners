@@ -1,4 +1,5 @@
 <div class="tabbable tabs-left">
+
   <ul class="nav nav-tabs">
     <li class="active">
       <a href="#my_apps" data-toggle="tab">Apps I Built</a>
@@ -14,7 +15,9 @@
       <%= render partial: "projects/list",
                   locals: {projects: @projects}%>
     </div>
+
     <div class="tab-pane" id="apps_to_test">
+      <h3>Apps I'm Testing</h3>
       <%= render partial: "projects/list", locals: {projects: @test_projects}%>
     </div>
   </div>
