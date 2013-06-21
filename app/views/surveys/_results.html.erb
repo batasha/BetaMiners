@@ -10,7 +10,7 @@
 <div class="clearfix">
   <ol class="span6">
     <% @survey.questions.each do |question| %>
-    <h5 class="left-header"><%= question.text %></h5>
+    <h4 class="left-header"><%= question.text %></h4>
 
     <dl>
       <% question.responses.each do |response| %>
