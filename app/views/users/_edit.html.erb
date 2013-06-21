@@ -16,6 +16,12 @@
 
 
     <%= profile.input :location %>
+
+    <div class="clearfix fields">
+      <div class="profile-pic left clearfix">
+        <%= image_tag @user.picture.url(:large) %>
+      </div>
+    </div>
     <%= f.input :picture, label: "Upload a new picture" %>
 
   <% end %>
