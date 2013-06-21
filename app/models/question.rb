@@ -6,7 +6,7 @@ class Question < ActiveRecord::Base
   accepts_nested_attributes_for :responses, reject_if: :all_blank
   has_many :choices, through: :responses
 
-  def comments
-    responses.map(&:comments)
+  def choices_with_comments
+    choices.select {|choice| choice.comment.presence}
   end
 end

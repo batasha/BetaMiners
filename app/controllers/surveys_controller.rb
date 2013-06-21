@@ -30,7 +30,7 @@ class SurveysController < ApplicationController
   end
 
   def results
-    @test = TestPhase.find(params[:test_phase_id])
+    @test = TestPhase.includes(survey: {questions: :choices}).find(params[:test_phase_id])
     @survey = @test.survey
 
     if request.xhr?

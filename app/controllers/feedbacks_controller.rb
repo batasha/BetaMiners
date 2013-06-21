@@ -1,8 +1,8 @@
 class FeedbacksController < ApplicationController
   def new
-    @project = Project.includes(test_phases: :survey).find(params[:project_id])
-    @test = @project.active_test || @project.test_phases.last
-    @survey = @test.survey
+    @project = Project.find(params[:project_id])
+    @test = @project.active_test
+    @survey = @test.survey(include: {questions: :responses})
     @feedback = current_user.feedbacks.build
 
     @feedback.choices.build
