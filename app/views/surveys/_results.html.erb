@@ -17,7 +17,16 @@
         <dd class="clearfix"><%= response.count %></dd>
       <% end %>
     </dl>
+    <a>Show Comments</a>
     <hr>
+    <div class="comments">
+      <% question.choices.each do |choice| %>
+        <div class="comment">
+          <h5>Comment created at <%= choice.created_at %></h5>
+          <p><%= choice.comment %></p>
+          <h5>User response: <%= choice.response.text %></h5>
+        </div>
+      <% end %>
     <% end %>
   </ol>
 
