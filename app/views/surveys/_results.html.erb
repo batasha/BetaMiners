@@ -41,18 +41,23 @@
   </ol>
 
   <dl class="span4">
-    <dt class="label-field span3">
-      <%= @survey.feedbacks.group("os").count.first[0] %>
-    </dt>
-    <dd class="clearfix">
-      <%= @survey.feedbacks.group("os").count.first[1] %>
-    </dd>
-    <dt class="label-field span3">
-      <%= @survey.feedbacks.group("browser").count.first[0] %>
-    </dt>
-    <dd class="clearfix">
-      <%= @survey.feedbacks.group("browser").count.first[1] %>
-    </dd>
+    <% for os in @os_stats.keys %>
+      <dt class="label-field span3">
+        <%= os %>
+      </dt>
+      <dd class="clearfix">
+        <%= @os_stats[os] %>
+      </dd>
+    <% end %>
+
+    <% for browser in @browser_stats.keys %>
+      <dt class="label-field span3">
+        <%= browser %>
+      </dt>
+      <dd class="clearfix">
+        <%= @browser_stats[browser] %>
+      </dd>
+    <% end %>
   </dl>
 <% end %>
 </div>
