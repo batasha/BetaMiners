@@ -32,6 +32,8 @@ class SurveysController < ApplicationController
   def results
     @test = TestPhase.includes(survey: {questions: :choices}).find(params[:test_phase_id])
     @survey = @test.survey
+    @os_stats = @survey.feedbacks.group("os").count
+    @browser_stats = @survey.feedbacks.group("browser").count
 
     if request.xhr?
       render partial: "results", locals: {survey: @survey}
