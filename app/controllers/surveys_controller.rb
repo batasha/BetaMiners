@@ -7,6 +7,7 @@ class SurveysController < ApplicationController
     4.times {question.responses.build}
   end
 
+
   def create
     @test = TestPhase.find(params[:test_phase_id])
     @survey = @test.build_survey(params[:survey])
@@ -18,6 +19,7 @@ class SurveysController < ApplicationController
     end
   end
 
+
   def show
     @test = TestPhase.find(params[:test_phase_id])
     @survey = @test.survey
@@ -28,6 +30,7 @@ class SurveysController < ApplicationController
       render :show
     end
   end
+
 
   def results
     @test = TestPhase.includes(survey: {questions: :choices}).find(params[:test_phase_id])

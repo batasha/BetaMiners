@@ -46,15 +46,15 @@ class ProjectsController < ApplicationController
 
   def edit
     @project = Project.includes(:screenshots).find(params[:id])
-    @screenshots = @project.screenshots
+    @screenshots = @project.screenshots.map(&:image)
 
     # => Allow upload of more screenshots if project has fewer than 5
     (5 - @screenshots.count).times {@project.screenshots.build}
 
     if request.xhr?
-      render partial: "edit"
+      render partial: "form"
     else
-      render :control_panel
+      render :edit
     end
 
   end
