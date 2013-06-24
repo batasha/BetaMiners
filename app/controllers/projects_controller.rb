@@ -1,6 +1,8 @@
 class ProjectsController < ApplicationController
   skip_before_filter :authenticate_user!, only: [:index]
+
   def index
+    # Show only public projects with an active test phase
     @projects = Project.where(private: false).select(&:active_test)
   end
 
@@ -8,7 +10,10 @@ class ProjectsController < ApplicationController
     @project = Project.includes(:screenshots, :testers).find(params[:id])
     @images = @project.screenshots.map(&:image)
     @test = @project.active_test
+
+    # Check whether current user is signed up to test this project
     @reg = current_user.registrations.where(project_id: @project.id)[0]
+
     @testers = @project.testers.sample(16)
     @tester_count = @project.testers.count
   end
@@ -31,9 +36,12 @@ class ProjectsController < ApplicationController
 
   def control_panel
     @project = Project.find(params[:project_id])
-    @tests = @project.test_phases.includes(:survey).order(:start_date).select(&:id)
-    @new_test = @project.test_phases.build
     @screenshots = @project.screenshots.map(&:image)
+
+    # Select all test phases that are saved to the DB
+    @tests = @project.test_phases.includes(:survey).order(:start_date).select(&:id)
+
+    @new_test = @project.test_phases.build
   end
 
   def edit

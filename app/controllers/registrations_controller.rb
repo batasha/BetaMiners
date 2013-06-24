@@ -12,6 +12,7 @@ class RegistrationsController < ApplicationController
                           testers: project.testers.sample(16),
                           tester_count: project.testers.count }
       else
+        flash[:alert] = "Signed up to test!"
         redirect_to :back
       end
     else
@@ -19,13 +20,13 @@ class RegistrationsController < ApplicationController
     end
   end
 
+
   def destroy
     project = Project.find(params[:project_id])
     old_reg = current_user.registrations.where(project_id: params[:project_id])[0]
     old_reg.destroy
 
       if request.xhr?
-        flash.now[:notice] = "No longer testing!"
         render partial: "projects/sidebar",
                 locals: { project: project,
                           reg: nil,
@@ -34,6 +35,7 @@ class RegistrationsController < ApplicationController
                           tester_count: project.testers.count }
 
       else
+        flash[:alert] = "No longer testing!"
         redirect_to :back
       end
 

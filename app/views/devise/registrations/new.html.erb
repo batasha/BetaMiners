@@ -1,5 +1,4 @@
   <h2>Sign up</h2>
-  <%= flash[:notice] %>
 
   <% resource.build_profile unless resource.profile %>
   <%= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
