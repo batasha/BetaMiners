@@ -2,6 +2,8 @@ BetaMiners
 ==========
 A place for web developers to find eager testers, and users to discover cool new projects.
 
+http://beta-miners.herokuapp.com
+
 Technologies Used:
 ------------------
 Ruby, Rails, JavaScript, jQuery, AJAX, Devise, OAuth, Facebook API, HTML, CSS, Paperclip
