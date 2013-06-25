@@ -11,6 +11,7 @@ Technologies Used:
 - JavaScript
 - jQuery
 - AJAX
+- UJS
 - Devise
 - OAuth
 - Facebook API
@@ -35,3 +36,4 @@ To Do:
 - Mailers
 - Gamification
 - Public comments for projects
+- Make all JS unobtrusive
