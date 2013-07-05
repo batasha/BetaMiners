@@ -1,6 +1,6 @@
 BetaMiners
 ==========
-A place for web developers to find eager testers, and users to discover cool new projects.
+A croudsourcing platform for beta testing web applications, created for my App Academy capstone project. BetaMiners is a place for web developers to find eager testers, and users to discover cool new projects!
 
 http://beta-miners.herokuapp.com
 
