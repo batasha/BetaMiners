@@ -1,6 +1,7 @@
 body {
-  background-color: darkkhaki;
   font-family: "Franklin Gothic Medium", "Franklin Gothic", "ITC Franklin Gothic", Arial, sans-serif;
+  background: gray image-url("ore.png");
+  background-size: 20%;
 }
 
 hr {
@@ -34,7 +35,7 @@ span {
 }
 
 .container {
-  background-color: cornsilk;
+  background-color: oldlace;
   padding: 20px;
   border-top-right-radius: 10px;
   border-top-left-radius: 10px;
@@ -86,7 +87,7 @@ span {
 }
 
 .navbar .brand:hover {
-  text-shadow: 0 1px 0 white;
+  text-shadow: 0 1px 0 oldlace;
 }
 
 .navbar .nav > li {
@@ -99,5 +100,5 @@ span {
 }
 
 .navbar .nav > li > a:hover {
-  text-shadow: 0 1px 0 white;
+  text-shadow: 0 1px 0 oldlace;
 }
