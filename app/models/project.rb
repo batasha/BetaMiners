@@ -19,7 +19,7 @@ class Project < ActiveRecord::Base
 
   def active_test
     self.test_phases.order(:start_date).find do |test|
-     test.status == "active" || test.status =="pending"
+     test.status == "active" || test.status =="pending" || test.status == "complete"
     end
   end
 

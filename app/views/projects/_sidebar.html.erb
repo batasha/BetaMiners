@@ -13,9 +13,11 @@
         method: :get, class: "btn btn-large btn-info",
         disabled: (test.status != "active") %>
 
-    <% unless test.status == "active" %>
+    <% if test.status == "pending" %>
       <div class="marketing"><em>This app will be open for testing on
       <%= date_format(test.start_date) %></em></div>
+    <% elsif test.status == "complete" %>
+      <div class="marketing"><em>This app has completed its current test phase.</em></div>
     <% end %>
 
   <% else %>
