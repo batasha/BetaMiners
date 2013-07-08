@@ -102,6 +102,13 @@
   line-height: 350px;
 }
 
+#carousel > ul > li > img {
+  height: 100%;
+  display: block;
+  margin: auto;
+  vertical-align: middle;
+}
+
 #carousel-nav.small{
   height: 350px;
   width: 620px;
